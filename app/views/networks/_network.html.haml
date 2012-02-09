@@ -1,0 +1,5 @@
+%tr
+  %td= network.name
+  %td
+    = link_to "Edit", edit_network_path(network)
+    = link_to "Delete", network_path(network), { :method => :delete, :confirm => "Are you sure want to delete \"#{network.name}\"?"}

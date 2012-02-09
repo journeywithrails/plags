@@ -1,0 +1,14 @@
+  - for final in @finalOutPut
+    .avatar{:style => "float:left"}=  image_tag "/images/selected_monitorings.jpg"
+    %p.message{:style => "float:left; padding-left:5px;"}
+      - if final[:is_mon] == true
+        %span{:style => 'color:#FF6666;'}New plaggs in
+      - else
+        You are monitoring
+        = final[:dep].to_s + ", #{final[:tag].to_s}" + ", #{final[:rec_sizes].to_s}" + ", #{final[:location].to_s}" 
+      %br
+      %span.timestamp{:style => "padding-left:5px;"}= "#{distance_of_time_in_words(final[:time_created],Time.now)} ago"
+      = link_to "Delete", :controller => 'monitroings', :action => 'delete_monitoring'
+      = link_to "Edit", :controller => 'monitroings', :action => 'delete_monitoring'
+      .clear{:style => "clear:both;"}
+      - update_pink_links(final[:group_id])

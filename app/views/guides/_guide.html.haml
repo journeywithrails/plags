@@ -1,0 +1,13 @@
+.guide
+  %h2.title= link_to guide.title, guide_path(guide)
+  .content
+    - if guide.image
+      = image_tag(guide.image.url)
+    = guide.content_html
+
+  %p.meta
+    = link_to "Permalink", guide_path(guide), { :class => "permalink" }
+    = link_to pluralize(guide.comments.count, "Comment"), "#{guide_path(guide)}#comments", { :class => "comment_count" }
+    - if authorized?
+      = link_to "Edit", edit_guide_path(guide), { :class => "edit" }
+      = link_to "Delete", guide_path(guide), { :method => :delete, :confirm => "Are you sure you want to delete \"#{guide.title}\"?", :class => "edit" }

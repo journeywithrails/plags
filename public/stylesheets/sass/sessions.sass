@@ -1,0 +1,90 @@
+@import variables.sass
+
+// new ========================================================================
+
+#shadow_box_authentication
+  display: none
+
+#authentication
+  position: absolute
+  background: #FFFFFF
+  height: 230px
+  padding:
+    bottom: 55px
+    top: 15px
+    left: 10px
+  #sign_in
+    float: left
+    width: 600px
+
+    .inputs
+    
+      li
+        position: relative
+        height: 42px
+        line-height: 42px
+
+        input,label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 18px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+        label
+          cursor: text
+          position: absolute
+
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+  #sign_up
+    float: right
+    width: 220px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 24px
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+    
+    p
+      margin-bottom: 18px
+    
+    strong
+      display: block
+      font-weight: bold
+      
+      span
+        color = !orange_text
+    
+    #new_user_link
+      +unbutton
+      background-image: url(/images/new_user_submit.png)
+      margin-bottom: 10px
+      width: 135px
+
+#session_submit
+  +unbutton
+  background-image: url(/images/new_session_submit.png)
+  width: 135px
+
+#authentication_warning
+  background = !pink_text
+  color: #fff
+  line-height: 26px
+  margin-bottom: 20px
+  padding: 0 12px

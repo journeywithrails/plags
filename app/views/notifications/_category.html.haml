@@ -1,0 +1,21 @@
+%li
+  .image= image_tag("/images/monitor_notification.png",:size => "17x15")
+  %p.message
+    There
+    - if category.current_unseen.zero?
+      are no new plaggs
+    - else
+      - if category.current_unseen == 1
+        is 1 new plagg
+      - else
+        are
+        = category.current_unseen
+        new plaggs
+    in 
+    = link_to category.category.name, category_path(category.category), { :class => "username" }
+    = link_to "(Edit)", monitor_category_path(category.category)
+    - if !category.current_unseen.zero?
+      you might like
+  %p.meta
+    %span.timestamp= category.created_at.strftime("%b %d, %Y %H:%M:%S GMT")
+    = link_to "Ignore", ignore_category_path(category.category), { :method => :delete, :class => "ignore" }

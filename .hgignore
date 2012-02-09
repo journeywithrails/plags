@@ -1,0 +1,13 @@
+syntax: glob
+
+.DS_Store
+config/database.yml
+config/facebooker.yml
+db/*.sqlite3
+log/*.log
+public/images/assets/*
+public/images/avatars/*
+public/stylesheets/*
+tmp/*
+nbproject
+plaggs.kdev*

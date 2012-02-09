@@ -1,0 +1,41 @@
+#sign_in
+  #authentication_warning
+
+  - semantic_form_for(:session, :url => { :controller => "sessions", :action => "create" }) do |f|
+
+    - f.inputs do
+      = f.input :username, :required => false, :input_html => {:value => cookies[:username] }
+
+      = f.input :password, :required => false, :input_html => {:value => cookies[:password] }
+
+    - f.buttons do
+      = f.commit_button "Sign In"
+      
+	  
+      %span Keep me logged in 
+      - if cookies[:username]
+        %span #{check_box_tag 'remember_me' ,1, :checked => true}
+      - else
+        %span #{check_box_tag 'remember_me'}
+      .clear{:style => "clear:both; height:10px;"}
+      %li
+        = link_to "Forgotten your password?",{:controller => "sessions", :action =>'forgot_password'}
+        =fb_login_button("window.location = '/sessions/link_with_facebook';")
+        =# link_to_function("Facebook", "window.location = '/sessions/link_with_facebook';", {:class => 'fbconnect_login_button'      
+#sign_up
+  %h2.title Not a member yet?
+  %p.subtitle Sign up now.
+  
+  %p
+    %strong
+      Register with Plaggs.com and
+      %span
+        browse
+        = Plagg.count
+        available items
+    or trade, talk, and meet other members from Plaggs.
+
+  %p Sign up now. It's free!
+
+  = link_to "Sign up now!", new_user_path, { :id => "new_user_link" }
+  = link_to "Go back", "#", {:onclick=> "Shadowbox.close()", :class => "cancel" }

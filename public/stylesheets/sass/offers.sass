@@ -1,0 +1,132 @@
+@import variables.sass
+
+// index ======================================================================
+
+#notifications
+
+  .title
+    color: #31312e
+    background: #f5f4ed
+    font-weight: bold
+    line-height: 26px
+    margin: 0 0 8px
+    padding: 0 12px
+
+  li
+    height: 60px
+    overflow: hidden
+    margin-top: 10px
+
+    .avatar
+      float: left
+      margin: 0 6px 0 0
+
+    .username
+      color = !teal_text
+
+    .plagg
+      color = !gray_text
+
+    .delete
+      color = !dark_text
+
+    .ignore
+      color = !dark_text
+
+    .timestamp
+      font-size: 11px
+
+    .image
+      float: left
+      margin: 30px 8px 0 0
+     
+
+  #accept
+    li
+      height: 70px
+      overflow: hidden
+
+    .image
+      float: left
+      margin: 30px 8px 0 0
+
+    .listimage
+      float: left
+      margin: 2px -17px 0 0
+
+
+    .avatar
+      float: left
+      margin: 0 6px 0 0
+
+    .username
+      color = !teal_text
+
+    .plagg
+      color = !gray_text
+
+    .delete
+      color = !dark_text
+	  
+    .ignore
+      color = !dark_text
+	
+    .timestamp
+      font-size: 11px
+
+// new ========================================================================
+#shadow_box_suggestion
+  display: none
+#suggestion
+  position: absolute
+  background: #FFFFFF
+  height: 370px
+  width: 850px
+  padding:
+    bottom: 55px
+    top: 15px
+    left: 10px
+  #available
+    color = !dark_text
+    float: left
+    height = !tile_height + 80px
+    overflow: scroll
+    overflow-y: hidden
+    width = (!tile_width + 10px) * 4
+
+    li
+      float: left
+      height = !tile_height + 80px
+      padding-right: 10px
+      text-align: center
+      width = !tile_width
+
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+  #choose
+    float: right
+    width: 220px
+    padding-right: 20px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 24px
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+    
+    p
+      margin-bottom: 18px
+    
+    #offer_submit
+      +unbutton
+      background-image: url(/images/new_user_submit.png)
+      width: 135px

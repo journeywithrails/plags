@@ -1,0 +1,8 @@
+%li
+  .avatar= link_to (image_tag(user.watchee.avatar.url(:thumb)), user_path(user.watchee))
+  %p.message
+    You are monitoring
+    = link_to user.watchee.username, user_path(user.watchee), { :class => "username" }
+  %p.meta
+    %span.timestamp= "#{distance_of_time_in_words(user.created_at,Time.now)} ago"
+    = link_to "Delete", ignore_user_path(user.watchee), { :method => :delete, :class => "ignore" }

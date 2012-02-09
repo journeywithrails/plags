@@ -1,0 +1,18 @@
+%li
+  .image= image_tag("/images/monitor_notification.png",:size => "17x15")
+  .avatar= link_to (image_tag(user.watchee.avatar.url(:thumb)), user_path(user.watchee))
+  %p.message
+    = link_to user.watchee.username, user_path(user.watchee), { :class => "username" }
+    has
+    - if user.current_unseen.zero?
+      no new plaggs
+    - else
+      - if user.current_unseen == 1
+        1 new plagg
+      - else
+        = user.current_unseen
+        new plaggs
+      you might like
+  %p.meta
+    %span.timestamp= user.created_at.strftime("%b %d, %Y %H:%M:%S GMT")
+    = link_to "Ignore", ignore_user_path(user.watchee), { :method => :delete, :class => "ignore" }

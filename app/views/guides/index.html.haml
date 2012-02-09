@@ -1,0 +1,33 @@
+.guide_header
+  .question_block
+    %h2.title
+      About the Site
+    %ul
+      %li= link_to "How do I use the site?", "#"
+      %li= link_to "How do I register?", "#"
+      %li= link_to "FAQ", "#"
+  .question_block
+    %h2.title
+      Advertising
+    %ul
+      %li= link_to "What does it cost?", "#"
+      %li= link_to "How do I pay?", "#"
+      %li= link_to "Is it secure to pay?", "#"
+  .question_block
+    %h2.title
+      Advertising
+    %ul
+      %li= link_to "What does it cost?", "#"
+      %li= link_to "How do I pay?", "#"
+      %li= link_to "Is it secure to pay?", "#"
+  .clear
+
+= will_paginate @guides
+
+#guides
+  = render @guides
+
+= will_paginate @guides
+
+- content_for :breadcrumb_trail do
+  = link_to "Guide Home", guides_path, :class => "last"

@@ -1,0 +1,13 @@
+
+- semantic_form_for(@plagg, :html => { :multipart => true }) do |f|
+  
+  = render :partial => "form", :locals => { :f => f }
+ 
+  
+
+  = link_to "Preview", "#", { :id => "preview_link" }
+
+
+
+- content_for :breadcrumb_trail do
+  = link_to "Post an ad", new_plagg_path, :class => "last"

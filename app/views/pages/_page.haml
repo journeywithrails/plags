@@ -1,0 +1,14 @@
+.page
+  %h2.bar
+    = link_to page.title, slugged_page_path(page.slug), { :class => "title" }
+    = link_to "Back to top", "#wrap", { :class => "top_link" }
+
+  .content
+    = page.content_html
+
+  %p.meta
+    = link_to "Continue reading", slugged_page_path(page.slug), { :class => "permalink" }
+    = link_to pluralize(page.comments.count, "Comment"), "#{slugged_page_path(page.slug)}#comments", { :class => "comment_count" }
+    - if authorized?
+      = link_to "Edit", edit_page_path(page), { :class => "edit" }
+      = link_to "Delete", page_path(page), { :method => :delete, :confirm => "Are you sure you want to delete \"#{page.title}\"?", :class => "edit" }

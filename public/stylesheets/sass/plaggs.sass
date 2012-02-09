@@ -1,0 +1,663 @@
+@import variables.sass
+
+// form =======================================================================
+
+=small_button
+  background:
+    color: transparent
+    repeat: no-repeat
+    position: 0 0
+  color: #fff
+  cursor: pointer
+  display: inline-block
+  font-weight: bold
+  height: 24px
+  line-height: 24px
+  text:
+    align: center
+    decoration: none
+  width: 93px
+
+#plagg_is_tradeable_input
+  display: none
+
+#allow_trading_button
+  +small_button
+  background-image: url(/images/allow_trading_button.png)
+
+  &.selected
+    background-position: 0 -24px
+
+#add_picture_link
+  +small_button
+  background-image: url(/images/add_picture_link.png)
+  margin-bottom: 32px
+
+.formtastic.plagg .file
+  margin-bottom: 0
+
+.formtastic.plagg .check_boxes
+  ol
+    overflow: hidden
+    width: 50%
+
+    li
+      float: left
+      margin: 0
+      width: 50%
+
+      label
+        font-weight: normal
+  
+
+// index ======================================================================
+
+#plaggs
+  overflow: hidden
+  width: 100%
+  
+  .no_plaggs
+    a
+      color = !regular_text
+
+  .plagg
+    float: left
+    margin: 0 10px 20px 0
+    width = !tile_width
+
+    .image
+      height = !tile_height
+      line-height = !tile_height
+      margin: 0 0 4px
+      width = !tile_width
+      
+    .info
+      float: left
+
+      .title
+        white-space: nowrap
+        overflow: hidden
+
+      a
+        text-decoration: none
+
+      .title a
+        color = !dark_text
+
+      .owner a
+        color = !regular_text
+        
+    .vote
+      margin: 16px 0 0 114px
+      background: url(/images/love_grey.png) no-repeat left
+      padding: 0 0 0 15px
+
+// show =======================================================================
+
+#plagg
+  overflow: hidden
+  width: 100%
+  
+  #location
+    font:
+      size: 10px
+      style: italic
+
+  #images
+    float: left
+    width = !preview_width
+
+    #preview
+      height = !preview_height
+      margin: 0 0 5px
+      overflow: hidden
+      position: relative
+      width = !preview_width
+
+      #carousel
+        height = !preview_height
+
+        .preview
+          float: left
+          height = !preview_height
+          overflow: hidden
+          position: relative
+          width = !preview_width
+
+          img
+            left: 0
+            position: absolute
+            top: 0
+
+      #next, #previous
+        background:
+          position: 0 0
+          repeat: no-repeat
+        cursor: pointer
+        display: none
+        height: 24px
+        position: absolute
+        top: 223px
+        width: 24px
+
+        &:hover
+          background-position: 0 -24px
+
+      #previous
+        background-image: url(/images/preview_previous.png)
+        left: 0
+
+      #next
+        background-image: url(/images/preview_next.png)
+        right: 0
+
+      #cursor
+        background: transparent url(/images/zoom_in.png) no-repeat 0 0
+        cursor: none
+        display: none
+        height: 24px
+        position: absolute
+        width: 24px
+
+        &.out
+          background-image: url(/images/zoom_out.png)
+
+    .miniview
+      cursor: pointer
+      display: block
+      float: left
+      height = !miniview_height
+      margin: 0 5px 0 0
+      width = !miniview_width
+
+    #edit_plagg_link
+      color = !regular_text
+      float: right
+
+  #details
+    float: right
+    width: 260px
+
+    #plagg_title
+      color = !dark_text
+      float: left
+      font:
+        size: 14px
+        weight: bold
+      width: 150px
+
+    #user
+      float: right
+      margin: 0 0 10px
+      padding: 1px 0
+      width: 110px
+
+      p
+        float: left
+        padding: 0 4px 0 0
+        text-align: right
+        width = 110px - 4px - !avatar_width
+
+        a
+          color = !teal_text
+          display: block
+          text-decoration: underline
+
+          &:hover
+            text-decoration: none
+
+    #category
+      color = !gray_text
+      float: left
+      font:
+        size: 10px
+        weight: normal
+        style: italic
+      margin: 0 0 10px
+      width: 150px
+
+    #price
+      clear: both
+      float: left
+      width: 25%
+
+    #trade_plagg_link
+      +unbutton
+      background-image: url(/images/new_plagg_submit.png)
+      float: left
+      width: 106px
+      &:hover
+        background-image: url(/images/new_plagg_submit_hover.png)
+
+    li
+      float: left
+      padding: 7px 10px 10px 0
+  
+      a
+        background:
+          color: transparent
+          position: 0 0
+          repeat: no-repeat
+        display: block
+        height: 28px
+        text-indent: -9999px
+        width: 31px
+  
+      &#email a
+        background-image: url(/images/email_share_button.png)
+        &:hover
+          background-image: url(/images/email_share_button_over.png)
+  
+      &#facebook a
+        background-image: url(/images/facebook_share_button.png)
+        &:hover
+          background-image: url(/images/facebook_share_button_over.png)
+  
+      &#twitter a
+        background-image: url(/images/twitter_share_button.png)
+        &:hover
+          background-image: url(/images/twitter_share_button_over.png)
+
+    #description
+      clear: both
+      height: 65px
+      padding: 20px 0
+
+    #tag_block
+      height: 151px
+
+    #contact_info
+      height: 48px
+      a
+        color = !teal_text
+        text-decoration: underline
+
+        &:hover
+          text-decoration: none
+
+    #tags,
+    #condition
+      margin: 0 0 8px
+
+    #size,
+    #contact_info
+      margin: 0 0 39px
+
+    #price h3,
+    #tags h3,
+    #condition h3,
+    #size h3,
+    #contact_info h3
+      font:
+        size: 12px
+        weight: bold
+
+    #price h3
+      font-style: italic
+
+    #tags a,
+    #condition a,
+    #size a
+      color = !regular_text
+      text-decoration: underline
+
+      &:hover
+        text-decoration: none
+
+// new ========================================================================
+
+#plagg_submit
+  +unbutton
+  background-image: url(/images/new_user_submit.png)
+  width: 135px
+#vote
+  float: right
+
+  label
+    padding: 3px
+  #vote_plagg_link
+    +unbutton
+    background-image: url(/images/love.png)
+    width: 17px
+    height: 15px
+    float: left
+    color: transparent
+
+#preview_plagg_submit
+  +unbutton
+  background-image: url(/images/new_user_submit.png)
+  width: 135px
+
+#cancel
+  +unbutton
+  background-image: url(/images/new_user_submit.png)
+  width: 135px
+// decline =====================================================================
+#shadow_box_decline
+  display: none
+#decline
+  position: absolute
+  background: #FFFFFF
+  height: 280px
+  padding: 25px
+  width: 950px
+
+  #description
+
+    .inputs
+    
+      li
+        position: relative
+        line-height: 42px
+
+        textarea, label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          line-height: 18px
+          padding: 12px 18px
+          width: 900px
+
+        textarea
+          height: 180px
+
+        label
+          cursor: text
+          position: absolute
+
+    .buttons
+      
+      ol
+        overflow: hidden
+
+      li
+        float: left
+        padding: 0 25px 0 0
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+#reason_submit
+  +unbutton
+  background-image: url(/images/new_session_submit.png)
+  width: 135px
+
+#preview_link
+  +unbutton
+  background-image: url(/images/new_user_submit.png)
+  width: 135px
+
+#plagg_video_link
+  +unbutton
+  background-image: url(/images/video_button.png)
+  width: 48px
+  height: 48px
+  float: left
+  color: transparent
+  &:hover
+    background-image: url(/images/video_button_hover.png)
+
+#shadow_plagg_video_link
+  +unbutton
+  background-image: url(/images/video_button.png)
+  width: 48px
+  height: 48px
+  float: left
+  color: transparent
+  &:hover
+    background-image: url(/images/video_button_hover.png)
+
+#plagg_video
+  position: fixed
+  background-color: transparent
+  width: 640px
+  height: 480px
+  margin-left: -414px
+  margin-top: -300px
+  top: 50%
+
+
+
+#plagg_preview
+  //position: absolute
+  margin-top: -100px
+  border: 1px solid black
+   
+  #plagg
+    overflow: hidden
+    width: 100%
+    margin-top: -60px
+
+  
+    
+
+     
+    #details
+      float: left
+      width: 260px
+      padding-left: 16px
+
+      .asset
+        float:left
+
+      .title
+        color = !dark_text
+        float: left
+        font:
+          size: 14px
+          weight: bold
+        width: 150px
+
+      .department
+        color = !gray_text
+        float: left
+        clear: both
+        font:
+          size: 13px
+          weight: bold
+        margin: 0 0 10px
+
+      #user
+        float: right
+        margin: 0 0 10px
+        padding: 1px 0
+        width: 110px
+
+        p
+          float: left
+          padding: 0 4px 0 0
+          text-align: right
+          width = 110px - 4px - !avatar_width
+
+          a
+            color = !teal_text
+            display: block
+            text-decoration: underline
+
+            &:hover
+              text-decoration: none
+
+      #category
+        color = !gray_text
+        float: left
+        font:
+          size: 13px
+          weight: bold
+        margin: 0 0 10px
+
+      .price
+        clear: both
+        float: left
+        width: 25%
+
+
+      h3
+        clear: both
+        padding-top: 15px
+        font:
+          size: 12px
+          weight: bold
+          style: italic
+
+      .description
+        clear: both
+        padding: 20px 0
+
+      li
+        float: left
+        padding: 7px 10px 10px 0
+
+        a
+          background:
+            color: transparent
+            position: 0 0
+            repeat: no-repeat
+          display: block
+          height: 28px
+          text-indent: -9999px
+          width: 31px
+
+
+      #description
+        clear: both
+        padding: 20px 0
+
+      #contact_info
+        a
+          color = !teal_text
+          text-decoration: underline
+
+          &:hover
+            text-decoration: none
+
+      #tags,
+      #condition
+        margin: 0 0 8px
+
+      #size,
+      #contact_info
+        margin: 0 0 46px
+
+
+      .price h3
+        font-style: italic
+
+      #tags a,
+      #condition a,
+      #size a
+        color = !regular_text
+        text-decoration: underline
+
+        &:hover
+          text-decoration: none
+  li
+    float: left
+    padding-top: 8px
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+#shadow_box_email
+  display: none
+
+#shadow_email
+  position: absolute
+  background: #FFFFFF
+  height: 400px
+  padding-left: 15px
+  padding-top: 18px
+  width: 850px
+  
+  .formtastic
+    margin: 15px 0 0 0
+
+  #send_now
+    float: left
+   
+    #title
+      color =  #929186
+      margin-top: -40px
+      margin-left: 59px
+      font:
+        size: 15px
+        weight: bold
+      line-height: 24px
+
+    .inputs
+
+      li
+        position: relative
+        line-height: 42px
+
+        input,label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 18px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+        textarea
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 126px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+
+        &.string
+          height: 42px
+
+        label
+          cursor: text
+          position: absolute
+  #send_feedback
+    float: right
+    width: 220px
+    padding-right: 20px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 20px
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+
+    p
+      margin-bottom: 18px
+
+    strong
+      display: block
+      font-weight: bold
+
+      span
+        color = !orange_text
+    .cancel
+      +unbutton
+      background-image: url(/images/new_session_submit.png)
+      width: 135px
+
+  #email_submit
+    +unbutton
+    background-image: url(/images/new_user_submit.png)
+    width: 135px
+

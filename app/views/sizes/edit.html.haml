@@ -1,0 +1,11 @@
+- semantic_form_for(@size) do |f|
+  
+  %h2.legend Editing size
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save changes"
+
+- content_for :breadcrumb_trail do
+  = link_to "Sizes", sizes_path
+  = link_to "Editing size", edit_size_path(@size), :class => "last"

@@ -1,0 +1,1011 @@
+@import variables.sass
+
+// Global =====================================================================
+
+body
+  background-color: #d3d2c1
+  color = !regular_text
+  font: 12px/16px Lucida Grande, Lucida Sans Unicode, Helvetica, Arial, sans-serif
+  
+a
+  &:link,
+  &:visited,
+  &:active
+    outline: none
+    &:hover
+      text-decoration: none
+
+input[type=button],
+input[type=submit],
+button
+  outline: none
+  
+  &:focus
+    outline: none
+
+  &::-moz-focus-inner
+    border: 0
+
+#wrap
+  background: transparent url(/images/wrap.png) repeat-y 0 0
+  margin: 0 auto
+  min-height: 100%
+  overflow: visible
+  position: relative
+  width: 1008px
+
+#head
+  background: transparent url(/images/nav.png) no-repeat 0 0
+
+  .logo
+    float: left
+    height: 38px
+    margin-left: 39px
+    width: 139px
+    color: transparent
+    
+.clear
+  clear: both
+// Navigation =================================================================
+
+#nav
+  float: right
+  height: 38px
+  line-height: 38px
+  margin: 0 4px
+  padding: 0 8px 4px
+
+  li
+    background: transparent url(/images/nav_divider.png) no-repeat 0 0
+    border-bottom:
+      width: 3px
+      style: solid
+    float: left
+    // padding: 0 0 0 1px
+
+    a
+      color = !dark_text
+      display: block
+      font-size: 13px
+      padding: 0 25px
+      text-decoration: none
+
+      &:hover
+        text-decoration: underline
+ 
+  #nav_join
+    border-bottom-color: #63aca0
+
+  #nav_guide
+    border-bottom-color: #e79f36
+  
+  #nav_about
+    border-bottom-color: #bcc431
+  
+  #nav_blog
+    border-bottom-color: #bc833e
+  
+  #nav_session
+    border-bottom-color: #d70055
+   
+
+  #view_notifications_link
+    border-bottom-color: #d70055
+    width: 88px
+    a
+      font-weight: bold
+      color = !pink_text
+      background: url(/images/notification_arrow.png) no-repeat right
+    
+
+    &.selected
+      border-bottom-color: #f0efee
+     
+      a
+        font-weight: bold
+   
+
+  #view_no_notifications_link
+    border-bottom-color: #d70055
+    width: 88px
+    a
+      font-weight: bold
+      background: url(/images/no_notification_arrow.png) no-repeat right
+     
+
+    &.selected
+      border-bottom-color: #f0efee
+     
+      a
+        font-weight: bold
+    
+      
+
+
+  #nav_admin
+    border-bottom-color: #000
+  
+    ul
+      background: #333
+      left: -9999px
+      line-height: 16px
+      margin-left: -1px
+      padding: 10px
+      position: absolute
+      width: 140px
+  
+      li
+        background: transparent
+        border: 0
+        float: none
+        padding: 0
+  
+        a
+          color: #fff
+          font-size: 11px
+          padding: 0
+
+          &:hover
+            background: transparent
+            text-decoration: underline
+  
+    &:hover ul
+      left: auto
+
+  #nav_search
+
+    form
+      padding: 0 25px
+
+    input
+      display: none
+
+    #query
+      display: inline-block
+      font: 12px Lucida Sans Unicode,Helvetica,Arial,sans-serif
+
+// Breadcrumb =================================================================
+
+#breadcrumb
+  background: transparent url(/images/site_title.png) no-repeat 0 0
+  clear: both
+  color = !dark_text
+  height: 32px
+  line-height: 32px
+  margin: 0 4px
+  padding: 98px 12px 0
+
+  a
+    background: #fff url(/images/breadcrumb.png) no-repeat right center
+    color = !dark_text
+    display: inline-block
+    padding-right: 8px
+    text-decoration: none
+
+    &.last
+      background-image: none
+      color = !lime_text
+      text-decoration: underline
+
+      &:hover
+        text-decoration: none
+
+#title
+  color = !dark_text
+  font-weight: bold
+  height: 32px
+  line-height: 32px
+
+  a
+    color = !dark_text
+    float: right
+    margin: 0 32px 0 0
+
+#body
+  background-color: #fff
+  margin: 0 4px
+  overflow: hidden
+  padding: 0 0 68px
+  width: 1000px
+
+#left,
+#middle,
+#right
+  float: left
+  margin: 0 20px 0 0
+  min-height: 1px
+
+// Left column ================================================================
+
+#left
+  width = !left_width
+
+  #nav_departments
+    background: transparent url(/images/nav_departments.png) no-repeat 0 0
+    height: 30px
+    overflow: hidden
+    width: !left_width
+
+    li
+      float: left
+
+      a
+        border-bottom: 4px solid transparent
+        color: #fff
+        display: block
+        height: 26px
+        line-height: 26px
+        padding: 0 12px
+        text-decoration: none
+
+        &:hover,
+        &.selected
+          border-bottom-color = !pink_text
+
+  #nav_categories
+    background: #8e8d86 url(/images/nav_categories.png) no-repeat left bottom
+    padding: 6px 0 12px
+
+    a
+      color: #fff
+      display: block
+      height: 20px
+      line-height: 20px
+      padding: 0 12px
+      text-decoration: none
+
+      &:hover,
+      &.selected
+        text-decoration: underline
+
+  #nav_sub_categories
+    padding: 6px 0 12px
+
+    a
+      color: #97968C
+      display: block
+      height: 20px
+      line-height: 20px
+      padding: 0 12px
+      text-decoration: none
+
+      &:hover,
+      &.selected
+        text-decoration: underline
+		
+// Middle column ==============================================================
+
+#middle
+  width = !middle_width
+
+  #notice, #warning, #notify
+    color: #fff
+    line-height: 26px
+    margin-bottom: 20px
+    padding: 0 12px
+
+  #notice
+    background = !teal_text
+
+  #warning
+    background = !pink_text
+
+  #notify
+    background = !teal_text
+
+// Right column ===============================================================
+
+#right
+  width = !right_width
+  .block
+    border-bottom: 2px solid #C9C8C2
+    padding: 5px 0 15px
+  
+  #post_button
+    background: transparent url(/images/new_plagg_link.png) no-repeat 0 -54px
+
+  #new_plagg_link
+    background: transparent url(/images/new_plagg_link.png) no-repeat 0 0
+    color: #fff
+    display: block
+    font:
+      size: 13px
+      weight: bold
+    height: 54px
+    line-height: 54px
+    padding: 0 0 0 25px
+    text-indent: -9999px
+    width = !right_width - 25px
+
+  #admin
+    margin: 0 0 46px
+
+  #admin h3
+    font:
+      size: 12px
+      weight: bold
+
+  #admin a
+    color = !regular_text
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+// Forms ======================================================================
+
+.formtastic
+
+  .legend
+    color = #31312e
+    background: #f5f4ed
+    font-weight: bold
+    height: 26px
+    line-height: 26px
+    margin: 0 0 8px
+    padding: 0 12px
+
+  fieldset
+    margin: 0 0 10px
+
+  li
+    margin: 0 0 10px
+
+  label
+    color = !gray_text
+    display: block
+    font-weight: bold
+    height: 20px
+    line-height: 20px
+
+  .string input,
+  .password input,
+  .text textarea
+    border: 1px solid #c9c8c2
+    line-height: 16px
+    padding: 3px 0
+    width: 250px
+
+  .file input
+    width: 250px
+
+// Tables =====================================================================
+
+table
+  color = !dark_text
+  margin-bottom: 16px
+  width: 100%
+
+  th
+    font-weight: bold
+
+  a
+    color = !pink_text
+
+#new_category_link,
+#new_department_link,
+#new_size_link,
+#new_tag_link,
+#new_network_link
+  +unbutton
+  background-image: url(/images/edit_user_submit.png)
+  width: 155px
+
+// Modal dialogs ==============================================================
+
+#shadow
+  background: #000
+  display: none
+  height: 100%
+  left: 0
+  opacity: 0.7
+  position: fixed
+  top: 0
+  width: 100%
+
+.modal
+  background: #fff
+  display: none
+  left: 50%
+  margin-left: -500px
+  overflow: hidden
+  padding: 69px 75px
+  position: fixed
+  top: 140px
+  width: 850px
+
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+// Contact form ===============================================================
+
+#contact_tab
+  background: transparent url(/images/contact_tab.png) no-repeat 0 0
+  cursor: pointer
+  height: 142px
+  position: fixed
+  right: 0
+  top: 250px
+  width: 44px
+
+#shadow_box_contact
+  display: none
+
+#contact
+  background: #FFFFFF
+  width: 850px
+  height: 300px
+  position: absolute
+  padding:
+    bottom: 55px
+    top: 15px
+    left: 10px
+
+
+  #send_now
+    float: left
+    width: 600px
+
+    .inputs
+
+      li
+        position: relative
+        line-height: 42px
+
+        input, label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 18px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+        textarea
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 126px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+          
+
+        &.string
+          height: 42px
+
+        label
+          cursor: text
+          position: absolute
+
+  #send_feedback
+    float: right
+    width: 220px
+    padding-right: 20px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 24px
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+
+    p
+      margin-bottom: 18px
+
+    strong
+      display: block
+      font-weight: bold
+
+      span
+        color = !orange_text
+
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+  #email_submit
+    +unbutton
+    background-image: url(/images/new_user_submit.png)
+    width: 135px
+
+
+
+#shadow_box_contacts
+  display: none
+
+#contacts
+  position: absolute
+  background: #FFFFFF
+  height: 300px
+  width: 850px
+  padding:
+    bottom: 55px
+    top: 15px
+    left: 10px
+
+  #send_now
+    float: left
+    width: 600px
+
+    #title
+      color =  #929186
+      margin-top: -40px
+      margin-left: 59px
+      font:
+        size: 15px
+        weight: bold
+      line-height: 24px
+
+    .inputs
+
+      li
+        position: relative
+        line-height: 42px
+
+        input, label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 18px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+        textarea
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 126px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+
+        &.string
+          height: 42px
+
+        label
+          cursor: text
+          position: absolute
+  #send_feedback
+    float: right
+    width: 220px
+    padding-right: 20px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 20px
+      
+    .avatar
+      float: right
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+
+    p
+      margin-bottom: 18px
+
+    strong
+      display: block
+      font-weight: bold
+
+      span
+        color = !orange_text
+
+  .cancel
+    +unbutton
+    background-image: url(/images/new_session_submit.png)
+    width: 135px
+
+  #email_submit
+    +unbutton
+    background-image: url(/images/new_user_submit.png)
+    width: 135px
+
+
+
+#emails
+  height: 300px
+  padding:
+    bottom: 55px
+    top: 15px
+
+  #send_now
+    float: left
+    width: 600px
+
+    #title
+      color =  #929186
+      margin-top: -40px
+      margin-left: 59px
+      font:
+        size: 15px
+        weight: bold
+      line-height: 24px
+
+    .inputs
+
+      li
+        position: relative
+        line-height: 42px
+
+        input, label
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 18px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+        textarea
+          background: #f5f4ed
+          border: 0
+          color: #929186
+          font:
+            size: 14px
+            weight: normal
+          height: 126px
+          line-height: 18px
+          padding: 12px 18px
+          width: 324px
+
+
+        &.string
+          height: 42px
+
+        label
+          cursor: text
+          position: absolute
+  #send_feedback
+    float: right
+    width: 220px
+
+    .title
+      color = !dark_text
+      font:
+        size: 14px
+        weight: bold
+      line-height: 24px
+
+    .subtitle
+      font:
+        size: 12px
+        weight: bold
+
+    p
+      margin-bottom: 18px
+
+    strong
+      display: block
+      font-weight: bold
+
+      span
+        color = !orange_text
+
+  #email_submit
+    +unbutton
+    background-image: url(/images/new_user_submit.png)
+    width: 135px
+// Pagination =================================================================
+
+.per_page
+  margin-bottom: 12px
+  text-align: right
+
+  a
+    color = !regular_text
+
+.pagination
+  color = !dark_text
+  padding:
+    bottom: 10px
+    right: 10px
+  text-align: right
+
+  .disabled
+    display: none
+
+  a
+    color = !dark_text
+    font-weight: bold
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
+
+  .prev_page,
+  .next_page
+    color = !regular_text
+    font-weight: normal
+    text-decoration: underline
+
+    &:hover
+      text-decoration: none
+
+  .current
+    color = !teal_text
+    font-weight: bold
+
+// Notifications ==============================================================
+#notification_popup
+  background: url("/images/notification_popup6.png") no-repeat scroll left top transparent
+  border-color: #c5c5c5
+  border-style: none solid solid solid
+  border-width: medium 1px 1px 1px
+  display: none
+  padding: 0 1px 17px
+  position: absolute
+  margin-left: -195px
+  width: 192px
+  margin-top: 41px
+
+
+
+  .title
+    color: transparent
+    cursor: pointer
+    height: 22px
+    line-height: 22px
+    padding: 0 2px
+    margin-top: -33px
+    width: 88px
+    float: right
+
+  li
+    /*border-top: 1px solid #f1f1f1
+    border-bottom: none
+    color = !dark_text
+    line-height: 12px
+    padding-left: 10px
+
+    &#user_info
+      /*border-top: 0
+      padding-top: 18px
+      padding-left: 15px
+      width: 95px
+
+      details
+        margin-top: -49px
+        float: right
+        width: 37px
+        
+
+      a
+        /*display: inline
+        color = !dark_teal_text
+        padding: 0
+        vertical-align: top
+        font-weight: bold
+
+    &#new_suggestions
+      padding-left: 15px
+      padding-top: 18px
+      line-height: 18px
+
+      span
+        color = !pink_text
+        font-weight: bold
+      time
+        color = !gray_text
+        font-size: 10px
+
+    &#new_monitoring
+      padding-top: 20px
+      padding-left: 15px
+      line-height: 18px
+      span
+        color = !pink_text
+        font-weight: bold
+      time
+        color = !teal_text
+        font-weight: bold
+    a
+      color = !teal_text
+      text-decoration: none
+      padding-left: 5px
+      background: none
+	  
+    &#no_alerts
+      padding-left: 15px
+      padding-top: 18px
+      line-height: 18px
+      color = !gray_text
+
+    &#links
+      /*border-top: 1px solid #f1f1f1
+      padding-top: 10px
+      border-bottom: none
+      color = !dark_text
+      line-height: 22px
+      padding-left: 10px
+
+      a
+        color = !dark_text
+        text-decoration: none
+        background: transparent
+        &:hover
+          text-decoration: underline
+      
+     
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  #notification_popup
+    right: 207px
+
+// Markdown ===================================================================
+
+.page, .post, .comment
+
+  .content
+  
+    em
+      font-style: italic
+
+    strong
+      font-weight: bold
+
+// Filtering ==================================================================
+
+#filter
+  margin: 0 0 15px 0
+
+  .formtastic
+    overflow: hidden
+
+    fieldset
+      margin: 0
+
+    legend.label
+      display: none
+
+    li
+      margin: 0
+
+      label
+        font-weight: normal
+
+    .inputs
+      float: left
+      width: 40%
+
+    .buttons
+      float: right
+      width: 16%
+      margin: 18px 5px 0 0
+      
+    #filter_location_input
+      float: left
+
+    #filter_tags, #filter_sizes
+      visibility: hidden
+      height: 24px
+
+    #filter_submit
+      +unbutton
+      background-image: url(/images/filter_submit.png)
+      height: 28px
+      line-height: 28px
+      width: 70px
+
+#register
+  padding-bottom: 66px
+  #sign_up_left
+    float: left
+    width: 220px
+
+    p
+      
+      strong
+        display: block
+        font-weight: bold
+
+        span
+          color = !orange_text
+      a
+        color: #97968C
+      span
+        font-weight: bold
+
+  #sign_up_right
+    float: right
+    width: 220px
+
+
+    p
+      margin-bottom: 18px
+      span
+        font-weight: bold
+      strong
+        display: block
+        font-weight: bold
+
+        span
+          color = !orange_text
+
+#sign_up_form
+  #username_error, #email_error, #password_error, #confirm_password_error
+    margin-left: 297px
+    margin-top: -42px
+    width: 180px
+
+    p
+      margin-top: -18px
+      padding-left: 32px
+
+  
+  #user_form
+    padding-bottom: 248px
+    #user_inputs
+      float: left
+      width: 220px
+ 
+
+    #user_error
+      float: right
+      width: 193px
+      margin-right: 91px
+      margin-top: 22px
+
+      p
+        margin-top: -18px
+        padding-left: 32px
+
+  
+  label.error
+    color: #E4005A
+    font-weight: normal
+
+
+  
+  
+#terms
+
+  h2
+    color: #31312E
+    font-weight: bold
+    height: 26px
+    line-height: 26px
+    margin: 0 0 8px
+
+  p
+    padding-left: 24px
+    padding-bottom: 6px
+    color: #31312E
+    font-size: 11.5px
+
+    span
+      color: blue
+  p.first
+    margin-top: -20px
+
+  

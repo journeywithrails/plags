@@ -1,0 +1,10 @@
+
+- semantic_form_for(@user, :live_validations => true,:html => { :multipart => true }) do |f|
+
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Sign up now!"
+
+- content_for :breadcrumb_trail do
+  = link_to "Sign Up", new_user_path, :class => "last"

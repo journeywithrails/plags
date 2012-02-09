@@ -1,0 +1,26 @@
+.fan_box {
+  margin-top: 10px;
+}
+.fan_box .full_widget {
+  border: none;
+  background: none;
+}
+.fan_box .full_widget .connections {
+  min-height: 100px;
+  padding: 10px 0 4px 10px;
+  border-top: none;
+}
+.fan_box .full_widget .connect_top {
+  background: #adac9d;
+}
+.fan_box .full_widget .connections_grid .grid_item .name {
+  color: #252525;
+}
+
+a {
+  color: #252525;
+}
+
+.UIButton_Gray:active {
+  background-color: #ADAC9D;
+}

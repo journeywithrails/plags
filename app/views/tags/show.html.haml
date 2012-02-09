@@ -1,0 +1,14 @@
+%h2#title
+  Plaggs tagged with
+  = @tag.name
+
+= will_paginate @plaggs
+
+#plaggs
+  = render :partial => "plaggs/plagg", :collection => @plaggs
+
+= will_paginate @plaggs
+
+- content_for :breadcrumb_trail do
+  = link_to "Tags", tags_path
+  = link_to @tag.name, tag_path(@tag), :class => "last"

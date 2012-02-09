@@ -1,0 +1,10 @@
+- semantic_form_for(@plagg, :html => { :multipart => true }) do |f|
+
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save my changes"
+    = link_to "Cancel",plagg_path(@plagg), { :id => "cancel" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Editing ad", edit_plagg_path(@plagg.id), :class => "last"

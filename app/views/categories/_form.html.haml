@@ -1,0 +1,8 @@
+= error_messages_for :category
+
+- f.inputs do
+  = f.input :name
+  = f.input :department
+  = f.input :weight
+  = f.input :sub_category, :as => :radio, :label => "Category Type", :collection => [["Primary", false], ["Secondary", true]]
+  = f.input :sizes, :as => :check_boxes

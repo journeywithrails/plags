@@ -1,0 +1,14 @@
+%h2#title All networks
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Actions
+  %tbody
+    = render @networks
+
+= link_to "New network", new_network_path, { :id => "new_network_link" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Networks", networks_path, :class => "last"

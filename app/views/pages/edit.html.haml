@@ -1,0 +1,11 @@
+- semantic_form_for(@page) do |f|
+  
+  %h2.legend Editing page
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save changes and publish now"
+
+- content_for :breadcrumb_trail do
+  = link_to "Pages", pages_path
+  = link_to "Editing page", edit_page_path(@page), :class => "last"

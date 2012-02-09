@@ -1,0 +1,26 @@
+#contact.modal
+  #send_now
+    - semantic_form_for(:email, :url => contact_path) do |f|
+      - f.inputs do
+        = f.input :name
+        = f.input :email_address
+        = f.input :body, :as => :text
+
+      - f.buttons do
+        = f.commit_button "Send now"
+
+  #send_feedback
+    %h2.title Send us feedback.
+    %p.subtitle It&#8217;s important.
+
+    %p
+      %strong
+        %span
+          Feel free to contact us about anything!
+      
+    %p
+      Questions, ideas, or even just some comments&mdash;all feedback is appreciated.
+
+    %p We&#8217;d love to hear from you!
+
+    = link_to "Go back", "#", { :class => "cancel" }

@@ -1,0 +1,5 @@
+#pages
+  = render @pages
+
+- content_for :breadcrumb_trail do
+  = link_to "Pages", pages_path, :class => "last"

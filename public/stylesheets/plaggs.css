@@ -1,0 +1,811 @@
+#plagg_is_tradeable_input {
+  display: none;
+}
+
+#allow_trading_button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+  width: 93px;
+  background-image: url(/images/allow_trading_button.png);
+}
+#allow_trading_button.selected {
+  background-position: 0 -24px;
+}
+
+#add_picture_link {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  text-decoration: none;
+  width: 93px;
+  background-image: url(/images/add_picture_link.png);
+  margin-bottom: 32px;
+}
+
+.formtastic.plagg .file {
+  margin-bottom: 0;
+}
+
+.formtastic.plagg .check_boxes ol {
+  overflow: hidden;
+  width: 50%;
+}
+.formtastic.plagg .check_boxes ol li {
+  float: left;
+  margin: 0;
+  width: 50%;
+}
+.formtastic.plagg .check_boxes ol li label {
+  font-weight: normal;
+}
+
+#plaggs {
+  overflow: hidden;
+  width: 100%;
+}
+#plaggs .no_plaggs a {
+  color: #97968c;
+}
+#plaggs .plagg {
+  float: left;
+  margin: 0 10px 20px 0;
+  width: 135px;
+}
+#plaggs .plagg .image {
+  height: 235px;
+  line-height: 235px;
+  margin: 0 0 4px;
+  width: 135px;
+}
+#plaggs .plagg .info {
+  float: left;
+}
+#plaggs .plagg .info .title {
+  white-space: nowrap;
+  overflow: hidden;
+}
+#plaggs .plagg .info a {
+  text-decoration: none;
+}
+#plaggs .plagg .info .title a {
+  color: #40403f;
+}
+#plaggs .plagg .info .owner a {
+  color: #97968c;
+}
+#plaggs .plagg .vote {
+  margin: 16px 0 0 114px;
+  background: url(/images/love_grey.png) no-repeat left;
+  padding: 0 0 0 15px;
+}
+
+#plagg {
+  overflow: hidden;
+  width: 100%;
+}
+#plagg #location {
+  font-size: 10px;
+  font-style: italic;
+}
+#plagg #images {
+  float: left;
+  width: 300px;
+}
+#plagg #images #preview {
+  height: 470px;
+  margin: 0 0 5px;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+}
+#plagg #images #preview #carousel {
+  height: 470px;
+}
+#plagg #images #preview #carousel .preview {
+  float: left;
+  height: 470px;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+}
+#plagg #images #preview #carousel .preview img {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+#plagg #images #preview #next, #plagg #images #preview #previous {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: none;
+  height: 24px;
+  position: absolute;
+  top: 223px;
+  width: 24px;
+}
+#plagg #images #preview #next:hover, #plagg #images #preview #previous:hover {
+  background-position: 0 -24px;
+}
+#plagg #images #preview #previous {
+  background-image: url(/images/preview_previous.png);
+  left: 0;
+}
+#plagg #images #preview #next {
+  background-image: url(/images/preview_next.png);
+  right: 0;
+}
+#plagg #images #preview #cursor {
+  background: transparent url(/images/zoom_in.png) no-repeat 0 0;
+  cursor: none;
+  display: none;
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+#plagg #images #preview #cursor.out {
+  background-image: url(/images/zoom_out.png);
+}
+#plagg #images .miniview {
+  cursor: pointer;
+  display: block;
+  float: left;
+  height: 48px;
+  margin: 0 5px 0 0;
+  width: 48px;
+}
+#plagg #images #edit_plagg_link {
+  color: #97968c;
+  float: right;
+}
+#plagg #details {
+  float: right;
+  width: 260px;
+}
+#plagg #details #plagg_title {
+  color: #40403f;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  width: 150px;
+}
+#plagg #details #user {
+  float: right;
+  margin: 0 0 10px;
+  padding: 1px 0;
+  width: 110px;
+}
+#plagg #details #user p {
+  float: left;
+  padding: 0 4px 0 0;
+  text-align: right;
+  width: 58px;
+}
+#plagg #details #user p a {
+  color: #5ba69a;
+  display: block;
+  text-decoration: underline;
+}
+#plagg #details #user p a:hover {
+  text-decoration: none;
+}
+#plagg #details #category {
+  color: #848484;
+  float: left;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: italic;
+  margin: 0 0 10px;
+  width: 150px;
+}
+#plagg #details #price {
+  clear: both;
+  float: left;
+  width: 25%;
+}
+#plagg #details #trade_plagg_link {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_plagg_submit.png);
+  float: left;
+  width: 106px;
+}
+#plagg #details #trade_plagg_link:hover {
+  background-image: url(/images/new_plagg_submit_hover.png);
+}
+#plagg #details li {
+  float: left;
+  padding: 7px 10px 10px 0;
+}
+#plagg #details li a {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: block;
+  height: 28px;
+  text-indent: -9999px;
+  width: 31px;
+}
+#plagg #details li#email a {
+  background-image: url(/images/email_share_button.png);
+}
+#plagg #details li#email a:hover {
+  background-image: url(/images/email_share_button_over.png);
+}
+#plagg #details li#facebook a {
+  background-image: url(/images/facebook_share_button.png);
+}
+#plagg #details li#facebook a:hover {
+  background-image: url(/images/facebook_share_button_over.png);
+}
+#plagg #details li#twitter a {
+  background-image: url(/images/twitter_share_button.png);
+}
+#plagg #details li#twitter a:hover {
+  background-image: url(/images/twitter_share_button_over.png);
+}
+#plagg #details #description {
+  clear: both;
+  height: 65px;
+  padding: 20px 0;
+}
+#plagg #details #tag_block {
+  height: 151px;
+}
+#plagg #details #contact_info {
+  height: 48px;
+}
+#plagg #details #contact_info a {
+  color: #5ba69a;
+  text-decoration: underline;
+}
+#plagg #details #contact_info a:hover {
+  text-decoration: none;
+}
+#plagg #details #tags,
+#plagg #details #condition {
+  margin: 0 0 8px;
+}
+#plagg #details #size,
+#plagg #details #contact_info {
+  margin: 0 0 39px;
+}
+#plagg #details #price h3,
+#plagg #details #tags h3,
+#plagg #details #condition h3,
+#plagg #details #size h3,
+#plagg #details #contact_info h3 {
+  font-size: 12px;
+  font-weight: bold;
+}
+#plagg #details #price h3 {
+  font-style: italic;
+}
+#plagg #details #tags a,
+#plagg #details #condition a,
+#plagg #details #size a {
+  color: #97968c;
+  text-decoration: underline;
+}
+#plagg #details #tags a:hover,
+#plagg #details #condition a:hover,
+#plagg #details #size a:hover {
+  text-decoration: none;
+}
+
+#plagg_submit {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}
+
+#vote {
+  float: right;
+}
+#vote label {
+  padding: 3px;
+}
+#vote #vote_plagg_link {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/love.png);
+  width: 17px;
+  height: 15px;
+  float: left;
+  color: transparent;
+}
+
+#preview_plagg_submit {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}
+
+#cancel {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}
+
+#shadow_box_decline {
+  display: none;
+}
+
+#decline {
+  position: absolute;
+  background: #FFFFFF;
+  height: 280px;
+  padding: 25px;
+  width: 950px;
+}
+#decline #description .inputs li {
+  position: relative;
+  line-height: 42px;
+}
+#decline #description .inputs li textarea, #decline #description .inputs li label {
+  background: #f5f4ed;
+  border: 0;
+  color: #929186;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  padding: 12px 18px;
+  width: 900px;
+}
+#decline #description .inputs li textarea {
+  height: 180px;
+}
+#decline #description .inputs li label {
+  cursor: text;
+  position: absolute;
+}
+#decline #description .buttons ol {
+  overflow: hidden;
+}
+#decline #description .buttons li {
+  float: left;
+  padding: 0 25px 0 0;
+}
+#decline .cancel {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_session_submit.png);
+  width: 135px;
+}
+
+#reason_submit {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_session_submit.png);
+  width: 135px;
+}
+
+#preview_link {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}
+
+#plagg_video_link {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/video_button.png);
+  width: 48px;
+  height: 48px;
+  float: left;
+  color: transparent;
+}
+#plagg_video_link:hover {
+  background-image: url(/images/video_button_hover.png);
+}
+
+#shadow_plagg_video_link {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/video_button.png);
+  width: 48px;
+  height: 48px;
+  float: left;
+  color: transparent;
+}
+#shadow_plagg_video_link:hover {
+  background-image: url(/images/video_button_hover.png);
+}
+
+#plagg_video {
+  position: fixed;
+  background-color: transparent;
+  width: 640px;
+  height: 480px;
+  margin-left: -414px;
+  margin-top: -300px;
+  top: 50%;
+}
+
+#plagg_preview {
+  margin-top: -100px;
+  border: 1px solid black;
+}
+#plagg_preview #plagg {
+  overflow: hidden;
+  width: 100%;
+  margin-top: -60px;
+}
+#plagg_preview #plagg #details {
+  float: left;
+  width: 260px;
+  padding-left: 16px;
+}
+#plagg_preview #plagg #details .title {
+  color: #40403f;
+  float: left;
+  font-size: 14px;
+  font-weight: bold;
+  width: 150px;
+}
+#plagg_preview #plagg #details .department {
+  color: #848484;
+  float: left;
+  clear: both;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+#plagg_preview #plagg #details #user {
+  float: right;
+  margin: 0 0 10px;
+  padding: 1px 0;
+  width: 110px;
+}
+#plagg_preview #plagg #details #user p {
+  float: left;
+  padding: 0 4px 0 0;
+  text-align: right;
+  width: 58px;
+}
+#plagg_preview #plagg #details #user p a {
+  color: #5ba69a;
+  display: block;
+  text-decoration: underline;
+}
+#plagg_preview #plagg #details #user p a:hover {
+  text-decoration: none;
+}
+#plagg_preview #plagg #details #category {
+  color: #848484;
+  float: left;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+#plagg_preview #plagg #details .price {
+  clear: both;
+  float: left;
+  width: 25%;
+}
+#plagg_preview #plagg #details h3 {
+  clear: both;
+  padding-top: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+}
+#plagg_preview #plagg #details .description {
+  clear: both;
+  padding: 20px 0;
+}
+#plagg_preview #plagg #details li {
+  float: left;
+  padding: 7px 10px 10px 0;
+}
+#plagg_preview #plagg #details li a {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: block;
+  height: 28px;
+  text-indent: -9999px;
+  width: 31px;
+}
+#plagg_preview #plagg #details #description {
+  clear: both;
+  padding: 20px 0;
+}
+#plagg_preview #plagg #details #contact_info a {
+  color: #5ba69a;
+  text-decoration: underline;
+}
+#plagg_preview #plagg #details #contact_info a:hover {
+  text-decoration: none;
+}
+#plagg_preview #plagg #details #tags,
+#plagg_preview #plagg #details #condition {
+  margin: 0 0 8px;
+}
+#plagg_preview #plagg #details #size,
+#plagg_preview #plagg #details #contact_info {
+  margin: 0 0 46px;
+}
+#plagg_preview #plagg #details .price h3 {
+  font-style: italic;
+}
+#plagg_preview #plagg #details #tags a,
+#plagg_preview #plagg #details #condition a,
+#plagg_preview #plagg #details #size a {
+  color: #97968c;
+  text-decoration: underline;
+}
+#plagg_preview #plagg #details #tags a:hover,
+#plagg_preview #plagg #details #condition a:hover,
+#plagg_preview #plagg #details #size a:hover {
+  text-decoration: none;
+}
+#plagg_preview li {
+  float: left;
+  padding-top: 8px;
+}
+#plagg_preview .cancel {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_session_submit.png);
+  width: 135px;
+}
+
+#shadow_box_email {
+  display: none;
+}
+
+#shadow_email {
+  position: absolute;
+  background: #FFFFFF;
+  height: 400px;
+  padding-left: 15px;
+  padding-top: 18px;
+  width: 850px;
+}
+#shadow_email .formtastic {
+  margin: 15px 0 0 0;
+}
+#shadow_email #send_now {
+  float: left;
+}
+#shadow_email #send_now #title {
+  color: #929186;
+  margin-top: -40px;
+  margin-left: 59px;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 24px;
+}
+#shadow_email #send_now .inputs li {
+  position: relative;
+  line-height: 42px;
+}
+#shadow_email #send_now .inputs li input, #shadow_email #send_now .inputs li label {
+  background: #f5f4ed;
+  border: 0;
+  color: #929186;
+  font-size: 14px;
+  font-weight: normal;
+  height: 18px;
+  line-height: 18px;
+  padding: 12px 18px;
+  width: 324px;
+}
+#shadow_email #send_now .inputs li textarea {
+  background: #f5f4ed;
+  border: 0;
+  color: #929186;
+  font-size: 14px;
+  font-weight: normal;
+  height: 126px;
+  line-height: 18px;
+  padding: 12px 18px;
+  width: 324px;
+}
+#shadow_email #send_now .inputs li.string {
+  height: 42px;
+}
+#shadow_email #send_now .inputs li label {
+  cursor: text;
+  position: absolute;
+}
+#shadow_email #send_feedback {
+  float: right;
+  width: 220px;
+  padding-right: 20px;
+}
+#shadow_email #send_feedback .title {
+  color: #40403f;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+}
+#shadow_email #send_feedback .subtitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+#shadow_email #send_feedback p {
+  margin-bottom: 18px;
+}
+#shadow_email #send_feedback strong {
+  display: block;
+  font-weight: bold;
+}
+#shadow_email #send_feedback strong span {
+  color: #e89c2c;
+}
+#shadow_email #send_feedback .cancel {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_session_submit.png);
+  width: 135px;
+}
+#shadow_email #email_submit {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}

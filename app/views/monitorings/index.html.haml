@@ -1,0 +1,33 @@
+:javascript
+  window.onload= function()
+  {
+  if(document.getElementById('tab_value').value == "selected") {
+  display_monitorings(2);}
+  else { display_monitorings(1); }
+  }
+  function display_monitorings(id)
+  { 
+   if(id==1) { document.getElementById('user_monitorings').style.display = 'block'; document.getElementById('selected_monitorings').style.display = 'none';}
+   if(id==2) { document.getElementById('user_monitorings').style.display = 'none'; document.getElementById('selected_monitorings').style.display = 'block';}
+  }
+%input{:type => "hidden", :value => "#{params[:tab]}", :id => "tab_value"}
+#notifications
+  %h2.title 
+    %a{:href => "javascript://", :onclick => "display_monitorings(1)"} Users you&#8217;re monitoring
+    %a{:href => "javascript://", :onclick => "display_monitorings(2)"} Categories you&#8217;re monitoring
+  %ul
+    #user_monitorings
+      = render :partial => "user", :collection => @user_watchings
+    #selected_monitorings{:style => 'display:none;'}
+      - for final in @finalOutPut
+        .avatar{:style => "float:left"}=  image_tag "/images/selected_monitorings.jpg"
+        %p.message{:style => "float:left; padding-left:5px;"}
+          You are monitoring
+          = link_to (final[:dep].to_s + ", #{final[:tag].to_s}" + ", #{final[:rec_sizes].to_s}" + ", #{final[:location].to_s}", browse_category_path(:id =>final[:category_id].to_i, :filter =>{:tags =>final[:tag_ids], :sizes => final[:rec_size_ids], :location => final[:location].to_s} ), { :method => :post })
+        %br
+        %span.timestamp{:style => "padding-left:5px;"}= "#{distance_of_time_in_words(final[:time_created],Time.now)} ago"
+        = link_to "Delete", {:controller => 'monitorings', :action => 'delete', :id => final[:group_id], :tab => "selected"}, :confirm => "Are you sure?"
+        = link_to "Edit", monitor_category_path(:id => final[:category_id].to_i, :group_id => final[:group_id], :tab => "selected" ), { :method => :get }
+        .clear{:style => "clear:both;"}
+- content_for :breadcrumb_trail do
+  = link_to "Monitorings", monitoring_path, :class => "last" 

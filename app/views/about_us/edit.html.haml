@@ -1,0 +1,20 @@
+- form_for :content,  :url => ads_path(@content.id), :html  => {:method => "post"}  do
+  .right_content.form_width{:style => "height:auto; padding-left:20px;"}
+    .list_heading Editing the Content Details
+    %div  
+    %div{:style => "margin-top:5px; width:650px;"}
+      .form_left{:align => "left"} Question :
+      .form_inputfield= text_area :content,:title,:id=>:content_title,:style => 'width:200px;height:30px'
+      .error_message.form_inputfield{:style => "clear:both; padding-left:150px;"}
+        %font{:color => "#FF0000"}= error_message_on :content, :title
+      .clear
+    %div{:style => "margin-top:5px; width:650px;"}
+      .form_left{:align => "left"} Answer :
+      .form_inputfield= text_area :content,:description ,:style => 'width:200px;height:50px'
+      .error_message.form_inputfield{:style => "clear:both; padding-left:150px;"}
+        %font{:color => "#FF0000"}= error_message_on :content, :description
+      .clear
+    %div{:align => "center", :style => "margin-top:8px; width:550px;"}
+      = submit_tag "Update"
+      = link_to "View FAQ's List", :action => 'list'
+    .list_heading

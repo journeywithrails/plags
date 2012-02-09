@@ -1,0 +1,9 @@
+= will_paginate @posts
+
+#posts
+  = render @posts
+
+= will_paginate @posts
+
+- content_for :breadcrumb_trail do
+  = link_to "Blog", posts_path, :class => "last"

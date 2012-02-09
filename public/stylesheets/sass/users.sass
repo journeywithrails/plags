@@ -1,0 +1,48 @@
+@import variables.sass
+
+// show =======================================================================
+
+#user
+  margin: 0 0 16px
+  overflow: hidden
+  padding: 0 10px 0 0
+  width = !middle_width - 10px
+
+  div
+    float: right
+
+  .avatar
+    display: block
+    float: right
+    height = !avatar_height
+    width = !avatar_width
+
+  #info
+    padding: 0 10px
+    width: 110px
+    
+    #username
+      color = !dark_text
+      font-weight: bold
+
+    a
+      color = !regular_text
+
+  #profile
+    color = !gray_text
+    padding: 0 10px 0 0
+    width = !middle_width - !avatar_width - 150px
+
+// new ========================================================================
+
+#user_submit.create
+  +unbutton
+  background-image: url(/images/new_user_submit.png)
+  width: 135px
+
+// edit =======================================================================
+
+#user_submit.update
+  +unbutton
+  background-image: url(/images/edit_user_submit.png)
+  width: 155px

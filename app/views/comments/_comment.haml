@@ -1,0 +1,11 @@
+.comment
+  .avatar
+    = link_to image_tag(comment.user.avatar.url(:thumb)), user_path(comment.user)
+  .content
+    = link_to comment.user.username, user_path(comment.user), { :class => "username" }
+    = comment.text_html
+    %p.meta
+      %span.timestamp= comment.created_at.strftime("%b %d, %Y %H:%M:%S GMT")
+      - if authorized?
+        = link_to "Edit", edit_comment_path(comment)
+        = link_to "Delete", comment_path(comment), { :method => :delete }

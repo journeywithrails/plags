@@ -1,0 +1,148 @@
+#notifications .title {
+  color: #31312e;
+  background: #f5f4ed;
+  font-weight: bold;
+  line-height: 26px;
+  margin: 0 0 8px;
+  padding: 0 12px;
+}
+#notifications li {
+  height: 60px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+#notifications li .avatar {
+  float: left;
+  margin: 0 6px 0 0;
+}
+#notifications li .username {
+  color: #5ba69a;
+}
+#notifications li .plagg {
+  color: #848484;
+}
+#notifications li .delete {
+  color: #40403f;
+}
+#notifications li .ignore {
+  color: #40403f;
+}
+#notifications li .timestamp {
+  font-size: 11px;
+}
+#notifications li .image {
+  float: left;
+  margin: 30px 8px 0 0;
+}
+#notifications #accept li {
+  height: 70px;
+  overflow: hidden;
+}
+#notifications #accept .image {
+  float: left;
+  margin: 30px 8px 0 0;
+}
+#notifications #accept .listimage {
+  float: left;
+  margin: 2px -17px 0 0;
+}
+#notifications #accept .avatar {
+  float: left;
+  margin: 0 6px 0 0;
+}
+#notifications #accept .username {
+  color: #5ba69a;
+}
+#notifications #accept .plagg {
+  color: #848484;
+}
+#notifications #accept .delete {
+  color: #40403f;
+}
+#notifications #accept .ignore {
+  color: #40403f;
+}
+#notifications #accept .timestamp {
+  font-size: 11px;
+}
+
+#shadow_box_suggestion {
+  display: none;
+}
+
+#suggestion {
+  position: absolute;
+  background: #FFFFFF;
+  height: 370px;
+  width: 850px;
+  padding-bottom: 55px;
+  padding-top: 15px;
+  padding-left: 10px;
+}
+#suggestion #available {
+  color: #40403f;
+  float: left;
+  height: 315px;
+  overflow: scroll;
+  overflow-y: hidden;
+  width: 580px;
+}
+#suggestion #available li {
+  float: left;
+  height: 315px;
+  padding-right: 10px;
+  text-align: center;
+  width: 135px;
+}
+#suggestion .cancel {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_session_submit.png);
+  width: 135px;
+}
+#suggestion #choose {
+  float: right;
+  width: 220px;
+  padding-right: 20px;
+}
+#suggestion #choose .title {
+  color: #40403f;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+}
+#suggestion #choose .subtitle {
+  font-size: 12px;
+  font-weight: bold;
+}
+#suggestion #choose p {
+  margin-bottom: 18px;
+}
+#suggestion #choose #offer_submit {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}

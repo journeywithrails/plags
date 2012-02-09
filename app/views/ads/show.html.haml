@@ -1,0 +1,16 @@
+.right_content.form_width{:style => " padding-left:20px;"}
+  .list_heading Content Details
+  %div  
+  %div{:style => "margin-top:5px; width:500px; padding-left:50px;"}
+    .form_left{:align => "left", :style => "width:100px;"} Question :
+    .form_inputfield{:style => "width:400px;"}= @content.title
+    .clear
+  %div{:style => "margin-top:5px; width:700px; padding-left:50px;"}
+    .form_left{:align => "left", :style => "width:100px;"} Answer :
+    .form_inputfield{:style => "height:auto; width:550px;"}= @content.description
+    .clear
+  %div{:style => "margin-top:15px; width:500px; padding-left:50px;"}
+    .form_left{:align => "left", :style => "width:100px;"}
+      %a{:href => "javascript: history.go(-1)", :title => "Back"} Back
+    .form_inputfield= link_to "Edit", :action => 'edit', :id => @content.id
+    .clear

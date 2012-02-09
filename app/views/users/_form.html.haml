@@ -1,0 +1,66 @@
+= error_messages_for :user
+#register
+  #sign_up_left
+    %p
+      %strong
+        Register now and browse
+        %span
+          = Plagg.count
+          items
+      on
+      = link_to "Plaggs.com", root_path
+      trade, communicate and meet other members.
+      %span It's for free!
+  #sign_up_right
+    %p
+      Second information block option. 
+      Options for
+      %span deleting all old or similar options here.
+#sign_up_form
+  %h2.legend Tell us more about yourself.
+  - f.inputs do
+    = f.input :username
+    = f.input :email_address
+    = f.input :password
+    = f.input :password_confirmation
+   
+        
+  %h2.legend Further information
+  - f.inputs do
+    = f.input :gender,       :required => false, :as => :select, :collection => user_genders, :include_blank => false
+    = f.input :profile,      :required => false, :input_html => { :rows => 10 }
+    = f.input :phone_number, :required => false
+    = f.input :location,     :required => false
+    = f.input :avatar,       :required => false
+
+  %ul
+    - f.fields_for :networks_users do |builder|
+      %li
+        = builder.select :network_id, @networks.collect {|n| [n.name, n.id] }
+        = builder.text_field :url
+    
+  - if authorized?
+    %h2.legend Permissions
+
+    - f.inputs do
+      = f.input :role, :as => :select, :collection => user_roles
+
+  -unless current_user
+    %h2.legend Security form
+    = recaptcha_tags :ajax=>true ,:display=>{:theme=>'white'}
+    #terms
+      %h2 Agree to Terms of Service?
+      - f.inputs do
+        = f.check_box :agree
+        %p.first
+          I have read and agree to the
+          %span Plaggs! Terms of service
+          and
+          %span Plaggs! Privacy Policy
+          ,and to receive important communications from plaggs! electronically.
+        %p
+          I have also read and agree to the
+          %span Mail Terms of Service.
+        %p
+          For your convenience, these documents will be emailed to your Mail account.
+ 

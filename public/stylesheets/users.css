@@ -1,0 +1,67 @@
+#user {
+  margin: 0 0 16px;
+  overflow: hidden;
+  padding: 0 10px 0 0;
+  width: 570px;
+}
+#user div {
+  float: right;
+}
+#user .avatar {
+  display: block;
+  float: right;
+  height: 48px;
+  width: 48px;
+}
+#user #info {
+  padding: 0 10px;
+  width: 110px;
+}
+#user #info #username {
+  color: #40403f;
+  font-weight: bold;
+}
+#user #info a {
+  color: #97968c;
+}
+#user #profile {
+  color: #848484;
+  padding: 0 10px 0 0;
+  width: 382px;
+}
+
+#user_submit.create {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/new_user_submit.png);
+  width: 135px;
+}
+
+#user_submit.update {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(/images/edit_user_submit.png);
+  width: 155px;
+}

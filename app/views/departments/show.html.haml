@@ -1,0 +1,22 @@
+%h2#title 
+  Finsök
+  - if logged_in?
+    = link_to "Monitor", monitor_department_path(@department), { :method => :get }
+
+#filter
+  - semantic_form_for(:filter, :url => browse_department_path(@department)) do |f|
+    = render :partial => "shared/filter", :locals => { :f => f,:ts=>@ts,:to=>@to,:tc=>@tc, :tags  => @tags, :sizes => @sizes, :sel_tags => @sel_tags, :sel_sizes  => @sel_sizes, :location => @location }
+
+%p.per_page
+  = link_to("8",  plaggs_path(:per_page => 8)) + ","
+  = link_to("16", plaggs_path(:per_page => 16)) + ","
+  = link_to("24", plaggs_path(:per_page => 24))
+  per page
+
+#plaggs
+  = render :partial => "plaggs/plagg", :collection => @plaggs
+
+= will_paginate @plaggs
+
+- content_for :breadcrumb_trail do
+  = link_to @department.name, department_path(@department), :class => "last"

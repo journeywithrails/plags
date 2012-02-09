@@ -1,0 +1,28 @@
+#notifications
+  %h2.title Notifications
+  
+   
+  %ul
+    -@received_offers.each do |offer|
+    -plagg=offer.plagg
+    -@receives=plagg.offers.all(:conditions => [ "received_at IS NOT ? and accepted_at IS ? ",nil,nil],:order=>"sent_at DESC")
+     
+      = render :partial => "received", :collection => @receives
+    
+ 
+
+  %ul
+    = render :partial => "category", :collection => @category_watchings
+
+  %ul
+    = render :partial => "department", :collection => @department_watchings
+
+  %ul
+    = render :partial => "sent", :collection => @sent
+	
+  %ul
+    = render :partial => "accept", :collection => @accept
+
+- content_for :breadcrumb_trail do
+  = link_to "Notifications", notifications_path, :class => "last"
+

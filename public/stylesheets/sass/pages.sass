@@ -1,0 +1,95 @@
+@import variables.sass
+
+// nav ========================================================================
+
+#page_nav
+
+  ul
+    margin: 0 0 32px
+    overflow: hidden
+    width: 100%
+
+    li
+      float: left
+      width: 33%
+
+      h3
+        color: #31312e
+        font-weight: bold
+        line-height: 26px
+        margin: 0 0 8px      
+  
+      ul
+        margin: 0
+  
+        li
+          float: none
+          width: auto
+
+          a
+            color = !gray_text
+
+// generic ====================================================================
+
+.page
+
+  .content
+    color = !gray_text
+    padding: 0 0 0 12px
+
+    p
+      margin: 0 0 10px
+
+  .meta
+    margin-top: 16px
+    padding: 0 0 0 12px
+  
+    .permalink
+      color = !lime_text
+  
+    .comment_count
+      color = !gray_text
+  
+    .edit
+      color = !pink_text
+
+
+// index ======================================================================
+
+#pages
+
+  .page
+    margin: 0 0 32px
+
+    .bar
+      background: #f5f4ed
+      line-height: 26px
+      margin: 0 0 8px
+      overflow: hidden
+      padding: 0 12px
+      width = !middle_width - 24px
+
+      .title
+        float: left
+        color: #31312e
+        font-weight: bold
+        text-decoration: none
+  
+      .top_link
+        color = !regular_text
+        float: right
+        text-decoration: none
+
+// show =======================================================================
+
+#page.page
+
+  .title
+    color: #31312e
+    background: #f5f4ed
+    display: block
+    font-weight: bold
+    line-height: 26px
+    margin: 0 0 8px
+    padding: 0 12px
+    text-decoration: none

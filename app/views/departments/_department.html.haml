@@ -1,0 +1,6 @@
+%tr
+  %td= department.name
+  %td= department.weight
+  %td
+    = link_to "Edit", edit_department_path(department)
+    = link_to "Delete", department_path(department), { :method => :delete, :confirm => "Are you sure want to delete \"#{department.name}\"?"}

@@ -1,0 +1,28 @@
+%h2#title All Ads
+
+
+
+%table
+  %thead
+    %tr
+      %th Image
+      %th Title
+      %th User
+      %th
+      %th Actions
+  %tbody
+    - for ad in @ads
+      %tr
+        %td{:style => "width:100px;"} #{link_to image_tag(ad.assets[0].data.url(:miniview )), plagg_path(ad) if !ad.assets.blank?}
+        %td{:style => "width:100px;"} #{ad.title}
+        %td{:style => "width:100px;"} #{ad.user.username}
+        %td{:style => "width:100px;"} #{distance_of_time_in_words(Time.now,ad.created_at)} ago
+        %td{:style => "width:100px;"} #{link_to "View ad",plagg_path(ad),:style=>"color:#e4005a;"}
+                                      
+
+
+
+
+
+- content_for :breadcrumb_trail do
+  = link_to "Ads", ads_path, :class => "last"

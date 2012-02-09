@@ -1,0 +1,5 @@
+- f.inputs do
+  %li.asset
+    = link_to image_tag(f.object.data.url(:miniview)), f.object.data.url(:original)
+    = f.hidden_field :_destroy
+    = remove_asset_link "Remove", { :class => "remove_asset_link" }

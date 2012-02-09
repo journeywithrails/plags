@@ -1,0 +1,9 @@
+
+.brandtags_footer
+  - for brand in @brands
+    - if params[:controller] == "departments" && params[:action]=='show'
+      = link_to brand.brand_name, department_path(:id => params[:id], :filter => {:brand_name => brand.brand_name})
+    - elsif params[:controller] == "plaggs" && params[:action]=='show'
+      = link_to brand.brand_name, department_path(:id => brand.category.department_id, :filter => {:brand_name => brand.brand_name})
+    - else
+      = link_to brand.brand_name, department_path(:id => 2, :filter => {:brand_name => brand.brand_name})

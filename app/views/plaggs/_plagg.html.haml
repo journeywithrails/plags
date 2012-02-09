@@ -1,0 +1,12 @@
+.plagg
+  .tile
+  - if !plagg.assets.blank?
+    = link_to image_tag(plagg.assets[0].data.url(:tile)), plagg_path(plagg) if !plagg.assets.blank?
+  - else
+    = image_tag("/images/blank-post.gif")
+  .info
+    
+    %p.owner= link_to plagg.user.username, user_path(plagg.user)
+  .vote
+    - if plagg.votes.count > 0
+      = plagg.votes.count

@@ -1,0 +1,112 @@
+ <div id="sliderContent" class="ui-corner-all">	
+    
+		<div style="background:#f5f4ed; height:26px; width:445px; margin-left:18px">
+		<img src="/images/slider-left.gif" alt="left" style="float:left">
+		<div class="ui-slider ui-slider-horizontal ui-widget 
+ui-widget-content ui-corner-all" id="slider"><a style="left: 0%; border:0" 
+class="ui-slider-handle ui-state-default ui-corner-all ui-state-focus" 
+href="#">
+<img src="/images/slider.gif" alt="slider">
+
+</a></div>	
+<img src="/images/slider-right.gif" alt="right" style="float:right"> 
+
+	
+		</div>
+
+      <div class="viewer ui-corner-all">
+        <div style="width: 2128px; left: 0px;" class="content-conveyor ui-helper-clearfix">
+
+          <div class="item">
+         <!--   <h2>Omega Nebula</h2>-->
+           <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+         	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+		
+		  <div class="item">
+         <!--   <h2>Omega Nebula</h2>-->
+          <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+         	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+		  
+		  <div class="item">
+         <!--   <h2>Omega Nebula</h2>-->
+         <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+         	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+			
+          <div class="item">
+            <!--<h2>Rosette Nebula</h2>-->
+         <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+         	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+          
+          <div class="item">
+            <!--<h2>Ring Nebula</h2>-->
+           <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+          	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+
+          <div class="item">
+            <!--<h2>Tarantula Nebula</h2>-->
+           <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+         	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+
+          <div class="item">
+            <!--<h2>Triangulum Nebula</h2>-->
+            <%= image_tag("/images/assets/byt_view/86/diadora-scotland-home-jersey-2008.jpg")%>
+          	<h3>Sage skirt</h3>
+			<h3 class="text-price">20 SEK</h3>
+          </div>
+
+          
+          
+        </div>
+      </div>
+      
+    </div>
+
+    <script type="text/javascript">
+      $(function() {
+     		//vars
+		var conveyor = $(".content-conveyor", $("#sliderContent")),
+		item = $(".item", $("#sliderContent"));
+		
+		//set length of conveyor
+		conveyor.css("width", item.length * parseInt(item.css("width")));
+
+	
+	
+        //config
+
+        var sliderOpts = {
+
+		  max: (item.length * parseInt(item.css("width"))) - parseInt($("#sliderContent").css("width")),
+          slide: function(e, ui) { 
+            conveyor.css("left", "-" + ui.value + "px");
+          }
+
+        };
+
+        //create slider
+        $("#slider").slider(sliderOpts);
+      });
+    </script>
+
+
+
+
+
+
+
+
+
+
+

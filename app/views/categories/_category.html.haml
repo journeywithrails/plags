@@ -1,0 +1,7 @@
+%tr
+  %td= category.name
+  %td= category.department.name
+  %td= category.weight
+  %td
+    = link_to "Edit", edit_category_path(category)
+    = link_to "Delete", category_path(category), { :method => :delete, :confirm => "Are you sure want to delete \"#{category.name}\"?"}

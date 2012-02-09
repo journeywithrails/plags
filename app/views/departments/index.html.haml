@@ -1,0 +1,19 @@
+%h2#title All departments
+
+= will_paginate @departments
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Weight
+      %th Actions
+  %tbody
+    = render @departments
+
+= will_paginate @departments
+
+= link_to "New department", new_department_path, { :id => "new_department_link" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Departments", departments_path, :class => "last"

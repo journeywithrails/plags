@@ -1,0 +1,10 @@
+if logged_in?
+  if @destination.is_a?(String)
+    page.redirect_to @destination
+  else
+    page.reload
+  end
+else
+  page << "$('#authentication_warning').text(\"#{flash[:warning]}\");"
+  flash.discard
+end

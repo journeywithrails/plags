@@ -1,0 +1,27 @@
+- form_for :content,  :url => { :controller => :ads, :action => :create} do
+  .right_content.form_width{:style => "height:auto; padding-left:30px;"}
+    .list_heading Enter Content Details
+    %div  
+    %div{:style => "margin-top:5px; width:650px;"}
+      .form_left{:align => "left"} Question :
+      .form_inputfield= text_area :content,:title,:id=>:content_title,:style => 'width:200px;height:30px'
+      .error_message.form_inputfield{:style => "clear:both; padding-left:150px;"}
+        %font{:color => "#FF0000"}= error_message_on :content, :title
+      .clear
+    %div{:style => "margin-top:5px; width:650px;"}
+      .form_left{:align => "left"} Answer :
+      .form_inputfield= text_area :content,:description ,:style => 'width:200px;height:50px'
+      .error_message.form_inputfield{:style => "clear:both; padding-left:150px;"}
+        %font{:color => "#FF0000"}= error_message_on :content, :description
+      .clear
+      %div{:style => "margin-top:5px; width:650px;"}
+        .form_left{:align => "left"} Weight :
+        .form_inputfield= text_field :content,:weight
+        .error_message.form_inputfield{:style => "clear:both; padding-left:150px;"}
+          %font{:color => "#FF0000"}= error_message_on :content, :weight
+        .clear
+    %div{:align => "center", :style => "margin-top:8px; width:550px;"}
+      = submit_tag "Create"
+    %div{:align => "left", :style => "margin-top:18px; width:550px; padding-left:20px;"}
+      = link_to "FAQ's List", :action => 'list'
+    .list_heading

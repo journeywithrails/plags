@@ -1,0 +1,275 @@
+#plagg
+  #location
+    - if @plagg.user.location
+      %p= @plagg.user.location
+  #images
+    #preview
+      #carousel
+        - @plagg.assets.each do |asset|
+          .preview
+            = image_tag(asset.data.url(:preview))
+      #cursor
+      #next
+      #previous
+    - @plagg.assets.each do |asset|
+      %a.miniview
+        = image_tag(asset.data.url(:miniview))
+    -unless @plagg.body.blank?
+      #video
+
+      #pl_video
+        = @plagg.body_html
+      
+      :javascript
+            (function($) {
+            var sr
+            $("#pl_video embed").each(function(){
+            sr = sr = $(this).attr('src')+"&autoplay=1&fs=1&rel=0" ;
+           
+        });
+        
+
+                 $("#video").append("<a id = 'shadow_plagg_video_link' rel='shadowbox;width=640;height=480;player=swf' href='"+sr+"' >YouTube</a>");
+                 $("#pl_video").remove();
+            })(jQuery);
+    #vote
+      = link_to "vote", '#',{:id => "vote_plagg_link",:value=>@plagg.id}
+      %label= @plagg.votes.count
+    
+  #details
+    %h2#plagg_title= @plagg.title
+
+    #user
+      %p
+        By
+        = link_to @plagg.user.username, user_path(@plagg.user)
+      .avatar
+        = link_to (image_tag(@plagg.user.avatar.url(:thumb)), user_path(@plagg.user))
+
+    %p#category
+      = @plagg.department.name
+      &= ", "
+      -if @plagg.category
+        = @plagg.category.name
+
+    .clear
+    
+    #price
+      %h3 Price
+      %p #{@plagg.price} SEK
+
+    - if @plagg.is_tradeable? && @plagg.user != current_user
+      = link_to "", "#", { :id => "trade_plagg_link" }
+
+    %p#description
+      = @plagg.description
+
+    #tag_block
+      #tags
+        %h3 Tags
+        - if !@plagg.brand_name.blank?
+          - @bname = "#{link_to @plagg.brand_name, department_path(:id => @plagg.category.department_id, :filter => {:brand_name => @plagg.brand_name}), :style => "color:#5ba69a;"}"
+          %p= (@tags.map { |tag| link_to tag.name, category_path(:id => @plagg.category.id, :filter =>{:tags =>tag.id})} + @bname.to_a).to_sentence
+        - else
+          %p= @tags.map { |tag| link_to tag.name, category_path(:id => @plagg.category.id, :filter =>{:tags =>tag.id})}.to_sentence
+   
+      	
+
+      #condition
+        %h3 Condition
+        %p= @conditions.map { |condition| link_to condition.name, category_path(:id => @plagg.category.id, :filter =>{:tags =>condition.id})}.to_sentence
+    
+      #size
+        %h3 Size
+        %p= @plagg.size.name if !@plagg.size.blank?
+
+    #contact_info
+      %h3 Contact
+      %p= contact_info
+	  
+  
+    - if @plagg.approved == true
+      %ul
+        %li#facebook= link_to "Share" ,"http://www.facebook.com/sharer.php?u=http://plaggs.com#{plagg_path(@plagg)}&t=#{@plagg.title} ", :id => "facebook_share_link", :popup => ['new_window','height=300,width=600']
+        %li#twitter= link_to "Tweet", "http://twitter.com/home?status=#{@plagg.title} http://plaggs.com#{plagg_path(@plagg)}", :title=>"Share the plagg on Twitter!", :id => "twitter_share_link", :popup => ['new_window','height=300,width=600']
+        %li#email= link_to "Email", '#',{:id => "email_now_link"}
+#shadow_box_email
+  #shadow_email
+    #send_now
+      - semantic_form_for(:email, :url => share_plagg_with_friend_path) do |f|
+        - f.inputs do
+          = f.input :to, :label => "Friend's email"
+          - if @current_user
+            = f.input :from_email, :label => "Your email", :input_html => { :value => @current_user.email_address }
+          -else
+            = f.input :from_email, :label => "Your email"
+          = f.input :from_name, :as => :hidden, :label => "Your name"
+          = f.input :plagg_title, :as => :hidden, :input_html => { :value => @plagg.title }
+          = f.input :plagg_id, :as => :hidden, :input_html => { :value => @plagg.id }
+          = f.input :to_name, :as => :hidden, :input_html => { :value => @plagg.user.username }
+          = f.input :plagg, :as => :hidden, :input_html => { :value => @plagg }
+          = f.input :Message, :label => "Body", :as => :text
+          = f.input :Title, :as => :hidden, :input_html => { :value => "Check out this plagg!" }
+        - f.buttons do
+          = f.commit_button "Contact now"
+    
+    #send_feedback
+      %h2.title Mail your friend about this amazing plagg
+      %p.subtitle
+
+      %p
+        If your friend is a human, then spamming is not ok. Please respect that.
+
+
+      = link_to "Go back", "#", { :onclick=> "Shadowbox.close()", :class => "cancel" }
+
+  
+
+#comments
+  = render :partial => "comments/comment", :collection => @comments
+
+  - if logged_in? && @plagg.approved
+    - semantic_form_for([@plagg, @comment]) do |f|
+      = render :partial => "comments/form", :locals => { :f => f }
+
+      - f.buttons do
+        = f.commit_button "Comment"
+
+- if !@plagg.approved && authorized?
+  - content_for :decline_form do
+    #shadow_box_decline
+      #decline
+        - semantic_form_for :reason, :url => decline_plagg_path(@plagg) do |f|
+          = radio_button_tag "reason", ""  Reason2
+                
+         
+          #description
+            - f.inputs do
+              = f.input :description_of_changes, :as => :text, :label => "How can the user fix their ad?", :required => false
+            - f.buttons do
+              = f.commit_button "Send to user"
+              %li
+                = link_to "Go back", "#", {:onclick=> "Shadowbox.close()", :class => "cancel" }
+
+       
+- if logged_in? && @plagg.user != current_user
+  - content_for :offer_form do
+    #shadow_box_suggestion
+      #suggestion
+        - semantic_form_for(@offer) do |f|
+          = f.input :plagg_id, :as => :hidden, :input_html => { :value => @plagg.id }
+          #available
+            #available_container{:style => "width: #{135*current_user.plaggs.size}px"}
+              = render :partial => "shared/byt", :locals => { :f => f }
+          #choose
+            %h2.title Trade plaggs!
+            %p.subtitle Make your choice.
+
+            %p Choose the plaggs you want to trade for the owner's plagg by activating the checkboxes below them.
+
+            %p If the owner is interested in your offer, they will get contact with you to continue.
+          
+            - f.buttons do
+              = f.commit_button "Send now"
+              %li
+                = link_to "Go back", "#", {:onclick=> "Shadowbox.close()", :class => "cancel" }
+
+- content_for :offer_form do
+  #shadow_box_contacts
+    #contacts
+      #send_now
+        - semantic_form_for(:email, :url => contact_user_path) do |f|
+          - f.inputs do
+            = f.input :to, :as => :hidden, :input_html => { :value => @plagg.user.email_address }
+            - if @current_user
+              = f.input :from_name, :label => "Name", :input_html => { :value => @current_user.username }
+              = f.input :from_email, :label => "E-mail", :input_html => { :value => @current_user.email_address }
+            - else
+              = f.input :from_name, :label => "Name" 
+              = f.input :from_email, :label => "E-mail"
+            = f.input :plagg_title, :as => :hidden, :input_html => { :value => @plagg.title }
+            = f.input :plagg_id, :as => :hidden, :input_html => { :value => @plagg.id }
+            = f.input :to_name, :as => :hidden, :input_html => { :value => @plagg.user.username }
+            = f.input :plagg, :as => :hidden, :input_html => { :value => @plagg }
+            = f.input :Title, :as => :hidden, :input_html => { :value => "Regarding your plagg" }
+            = f.input :Message, :label => "Body", :as => :text
+
+          - f.buttons do
+            = f.commit_button "Contact now"
+      
+      #send_feedback
+        .avatar
+          = link_to (image_tag(@plagg.user.avatar.url(:thumb)), user_path(@plagg.user))
+      
+        %h2.title
+          contact
+          = @plagg.user.username
+          regarding his
+          =@plagg.title
+          
+        .clear
+        %fb:like{:font => "arial", :href => "http://172.20.1.21:4002", :width => "350"}
+
+            
+        %p.subtitle
+
+        %p
+          Use this form only if you are interested in this particular plagg. Otherwise, please use the comment field, or heart it.
+
+        = link_to "Go back", "#", { :onclick=> "Shadowbox.close()", :class => "cancel" }
+
+
+
+- if logged_in? || !logged_in?
+
+  - content_for :offer_form do
+    #plagg_video.modal
+      
+      %li
+        = @plagg.body_html
+  
+        
+
+
+
+
+- if logged_in?
+  - content_for :offer_form do
+    #emails.modal
+      #send_now
+        .avatar
+        = link_to (image_tag(@plagg.user.avatar.url(:thumb)), user_path(@plagg.user))
+        #title
+          publish your
+          =@plagg.title
+        - semantic_form_for(:email, :url => contact_user_path) do |f|
+          - f.inputs do
+            = f.input :from_email, :as => :hidden, :input_html => { :value => @current_user.email_address }
+            = f.input :from_name, :as => :hidden, :input_html => { :value => @current_user.username }
+            = f.input :plagg_title, :as => :hidden, :input_html => { :value => @plagg.title }
+            = f.input :plagg_id, :as => :hidden, :input_html => { :value => @plagg.id }
+            = f.input :To
+            = f.input :Message, :as => :text
+
+          - f.buttons do
+            = f.commit_button "Contact now"
+
+      #send_feedback
+        %h2.title Contact user
+        %p.subtitle Get in touch
+
+        %p
+          User will get your message and reply to your mail directly.
+
+
+        = link_to "Go back", "#", { :class => "cancel" }
+  
+
+- content_for :breadcrumb_trail do
+  = link_to @plagg.department.name, department_path(@plagg.department)
+  -if @plagg.category
+    = link_to @plagg.category.name, category_path(@plagg.category)
+  = link_to @plagg.title, plagg_path(@plagg), :class => "last"
+  
+      
+  

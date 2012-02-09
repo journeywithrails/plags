@@ -1,0 +1,14 @@
+%h2#title All sizes
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Actions
+  %tbody
+    = render @sizes
+
+= link_to "New size", new_size_path, { :id => "new_size_link" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Sizes", sizes_path, :class => "last"

@@ -1,0 +1,167 @@
+/* style for solving menu problem*/
+#nav #nav_admin ul {
+z-index:1000;
+}
+/* style for fixing filter button*/
+#filter .formtastic #filter_submit {
+width: 70px; margin-top:-46px;
+height: 28px;
+line-height: 28px;
+}
+/* style for reducing space of pagination*/
+.per_page {
+  margin-top:-25px;
+}
+/* style for aliging posts text*/
+#wrapper-block-content{
+	width:260px;
+	height:500px;
+	float:left;
+	display:inline;
+	margin-left:10px;
+	text-align:left
+}
+
+#post #wrapper-block-content li a {
+  background-color: transparent;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: block;
+  height: 28px;
+  text-indent: -9999px;
+  width: 31px;
+
+}
+
+/* style for displaying twitter, shared icins in posts details page*/
+.emal_button_post a{
+  background-image: url(/images/email_share_button.png); float:left; padding:5px;
+}
+.emal_button_post a:hover {
+  background-image: url(/images/email_share_button_over.png);
+}
+li.facebook_button_post a {
+  background-image: url(/images/facebook_share_button.png); float:left; padding:5px;
+}
+li.facebook_button_post a:hover {
+  background-image: url(/images/facebook_share_button_over.png);
+}
+.twitter_button_post a {
+  background-image: url(/images/twitter_share_button.png);  float:left; padding:5px;
+}
+.twitter_button_post a:hover {
+  background-image: url(/images/twitter_share_button_over.png);
+}
+
+/*styles for removing backgrounds of the post titles and content*/
+.post-paragraph .title a,.post-paragraph .title,.post #wrapper-block-content .title a,.post #wrapper-block-content .title{
+	background:none;
+	color:#2f2f2c;
+	padding-left:0
+}
+
+.post-paragraph .content p{
+	text-align:left;
+}
+
+.post-paragraph .content img{
+	padding-left:70px;
+}
+
+/* styles for abouts page*/
+#notifications .about-us-block .inner-title,
+#notifications .faqs-block .inner-title{
+    background:none;
+    font-size:13px;
+    font-weight:700; 
+    margin:10px 0 0;
+	color:#40403f;
+	padding-left:5px
+}
+#notifications .faqs-block .inner-title{
+	line-height:26px;
+	height:26px;
+	margin-bottom:0;
+}
+#notifications .about-us-block p,
+#notifications .faqs-block p{
+    padding-left:5px;
+    width:510px;
+    font-size:12px;
+    color:#8E8D86;
+    
+}
+#notifications .about-us-block p{
+	margin-top:-5px
+}
+#notifications .contact_us p{
+	margin-top:20px;
+}
+
+
+#notifications .faqs-block h2{
+	font-size:13px;
+	font-weight:700;
+	color:#40403f;
+	margin-top:21px;
+	margin-left:5px;
+}
+#notifications .faqs-block h2 a{
+	text-decoration:none;
+	color:#40403f;
+}
+#notifications .faqs-block h2 a:hover{
+	text-decoration:underline;
+}
+#notifications .faqs-block p.faqs-answers{
+	margin-left:0px
+}
+
+#preview_plagg_submit_sent {
+	color:#fff;
+	cursor:pointer;
+	display:block;
+	font-size:13px;
+	font-weight:700;
+	height:34px;
+	line-height:34px;
+	text-align:center;
+	text-decoration:none;
+	border:0;
+	background:#fff url(/images/upload-and-next.gif);
+	width:188px;
+	margin:0 10px;
+}
+#plagg_preview .cancel-change{
+	background:#fff url(/images/preview-cancel.gif);
+	width:95px;
+	
+}
+#nav #nav_search .inner-block{
+	background: url(/images/search-bg-styling.png) no-repeat 15px 8px;
+	padding-right:20px
+}
+#nav #nav_search #query{
+	border:0;
+	width:112px;
+}
+
+.brandtags_footer{
+
+padding:40px 100px 40px;
+word-spacing:-1px;
+text-align:center;
+font-size:10px;
+}
+
+
+.brandtags_footer a {
+color:#97968c;
+ text-decoration:none;
+ }
+ 
+ 
+.brandtags_footer a:hover{
+color:#97968c;
+ text-decoration:underline;
+ }

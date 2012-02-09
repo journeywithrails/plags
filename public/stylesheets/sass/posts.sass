@@ -1,0 +1,72 @@
+@import variables.sass
+
+// index ======================================================================
+
+.post,
+.guide
+  margin-bottom: 32px
+
+  .meta
+    margin-top: 16px
+    clear: both
+
+    .permalink
+      color = !lime_text
+
+    .comment_count
+      color = !gray_text
+
+    .edit
+      color = !pink_text
+
+// show =======================================================================
+
+.post,
+.guide
+
+  .title,
+  .title a
+    background-color = !tan_background
+    color = !dark_text
+    font:
+      size: 13px
+      weight: bold
+    margin: 0 0 20px
+    text-decoration: none
+    padding: 7px 0 7px 2px
+
+  .content
+    color = !gray_text
+
+  .content p
+    margin: 0 0 10px
+  
+  .content img
+    float: right
+    padding: 10px
+
+#comments
+
+  margin-top: 32px
+
+  .formtastic .text textarea
+    line-height: 16px
+
+  .buttons .commit
+    margin-top: 4px
+
+// question block =======================================================================
+
+.question_block
+  float: left
+  padding: 0 70px 20px 0
+  
+  a
+    color = !gray_text
+  
+  .title
+    color = !dark_text
+    font:
+      size: 13px
+      weight: bold
+  

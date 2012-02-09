@@ -1,0 +1,14 @@
+%li
+  .image= image_tag("/images/sent.png",:size => "17x14")
+  .avatar= image_tag(sent.plagg.assets.first.data.url(:miniview))
+  %p.message
+    You sent a request for
+    = link_to(sent.receiver.username, user_path(sent.receiver), { :class => "username" }) + "&#8217;s"
+    = link_to sent.plagg.title, plagg_path(sent.plagg), { :class => "plagg" }
+    in exchange for your
+    = sent.plaggs.map { |p| link_to p.title, plagg_path(p), { :class => "plagg" } }.to_sentence
+    %p= "<i>#{sent.offerings[0].notes}</i>"
+  %p.meta
+    %span.timestamp= "#{time_ago_in_words (sent.created_at)} ago"
+   
+    %span.remove= link_to "Delete", { :controller => "offers", :action => "sdestroy", :id => sent.id }, { :class => "delete", :method => :delete }

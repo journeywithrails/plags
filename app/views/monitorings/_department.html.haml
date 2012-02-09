@@ -1,0 +1,19 @@
+%li
+  %p.message
+    There
+    - if department.current_unseen.zero?
+      are no new plaggs
+    - else
+      - if department.current_unseen == 1
+        is 1 new plagg
+      - else
+        are
+        = department.current_unseen
+        new plaggs
+    in 
+    = link_to department.department.name, department_path(department.department), { :class => "username" }
+    - if !department.current_unseen.zero?
+      you might like
+  %p.meta
+    %span.timestamp= department.created_at.strftime("%b %d, %Y %H:%M:%S GMT")
+    = link_to "Ignore", ignore_department_path(department.department), { :method => :delete, :class => "ignore" }

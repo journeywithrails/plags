@@ -1,0 +1,11 @@
+- semantic_form_for @guide, :html => {:multipart => true} do |f|
+  
+  %h2.legend Write a new guide
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Publish now"
+    
+- content_for :breadcrumb_trail do
+  = link_to "Guide Home", guides_path
+  = link_to "Create a new guide", new_guide_path, :class => "last"

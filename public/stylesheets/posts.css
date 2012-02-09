@@ -1,0 +1,70 @@
+.post,
+.guide {
+  margin-bottom: 32px;
+}
+.post .meta,
+.guide .meta {
+  margin-top: 16px;
+  clear: both;
+}
+.post .meta .permalink,
+.guide .meta .permalink {
+  color: #b1b82b;
+}
+.post .meta .comment_count,
+.guide .meta .comment_count {
+  color: #848484;
+}
+.post .meta .edit,
+.guide .meta .edit {
+  color: #e4005a;
+}
+
+.post .title,
+.post .title a,
+.guide .title,
+.guide .title a {
+  background-color: #f5f4ed;
+  color: #40403f;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 20px;
+  text-decoration: none;
+  padding: 7px 0 7px 2px;
+}
+.post .content,
+.guide .content {
+  color: #848484;
+}
+.post .content p,
+.guide .content p {
+  margin: 0 0 10px;
+}
+.post .content img,
+.guide .content img {
+  float: right;
+  padding: 10px;
+}
+
+#comments {
+  margin-top: 32px;
+}
+#comments .formtastic .text textarea {
+  line-height: 16px;
+}
+#comments .buttons .commit {
+  margin-top: 4px;
+}
+
+.question_block {
+  float: left;
+  padding: 0 70px 20px 0;
+}
+.question_block a {
+  color: #848484;
+}
+.question_block .title {
+  color: #40403f;
+  font-size: 13px;
+  font-weight: bold;
+}

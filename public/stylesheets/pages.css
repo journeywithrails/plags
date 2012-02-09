@@ -1,0 +1,80 @@
+#page_nav ul {
+  margin: 0 0 32px;
+  overflow: hidden;
+  width: 100%;
+}
+#page_nav ul li {
+  float: left;
+  width: 33%;
+}
+#page_nav ul li h3 {
+  color: #31312e;
+  font-weight: bold;
+  line-height: 26px;
+  margin: 0 0 8px;
+}
+#page_nav ul li ul {
+  margin: 0;
+}
+#page_nav ul li ul li {
+  float: none;
+  width: auto;
+}
+#page_nav ul li ul li a {
+  color: #848484;
+}
+
+.page .content {
+  color: #848484;
+  padding: 0 0 0 12px;
+}
+.page .content p {
+  margin: 0 0 10px;
+}
+.page .meta {
+  margin-top: 16px;
+  padding: 0 0 0 12px;
+}
+.page .meta .permalink {
+  color: #b1b82b;
+}
+.page .meta .comment_count {
+  color: #848484;
+}
+.page .meta .edit {
+  color: #e4005a;
+}
+
+#pages .page {
+  margin: 0 0 32px;
+}
+#pages .page .bar {
+  background: #f5f4ed;
+  line-height: 26px;
+  margin: 0 0 8px;
+  overflow: hidden;
+  padding: 0 12px;
+  width: 556px;
+}
+#pages .page .bar .title {
+  float: left;
+  color: #31312e;
+  font-weight: bold;
+  text-decoration: none;
+}
+#pages .page .bar .top_link {
+  color: #97968c;
+  float: right;
+  text-decoration: none;
+}
+
+#page.page .title {
+  color: #31312e;
+  background: #f5f4ed;
+  display: block;
+  font-weight: bold;
+  line-height: 26px;
+  margin: 0 0 8px;
+  padding: 0 12px;
+  text-decoration: none;
+}

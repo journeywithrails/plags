@@ -1,0 +1,11 @@
+- semantic_form_for(@tag) do |f|
+  
+  %h2.legend Edit tag
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save changes"
+
+- content_for :breadcrumb_trail do
+  = link_to "Tags", tags_path
+  = link_to "Editing tag", edit_tag_path(@tag), :class => "last"

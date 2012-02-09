@@ -1,0 +1,86 @@
+#post.post
+  .content
+  = render :partial => "images_preview", :locals => {:post => @post }
+  #wrapper-block-content
+    %div{:style => "padding-top:7px;height:422px"}
+      %h2.title= @post.title
+      = @post.content_html
+      - if authorized?
+        %p.meta
+          = link_to "Edit post", edit_post_path(@post.perma_link), { :class => "edit" }
+          = link_to "Delete", post_path(@post.perma_link), { :method => :delete, :confirm => "Are you sure you want to delete \"#{@post.title}\"?", :class => "edit" }
+
+
+    - if authorized?
+      %ul{:style => "padding-top:30px;"}
+        %li.facebook_button_post{:id => "facebook"}= link_to "Share" ,"http://www.facebook.com/sharer.php?u=http://plaggs.com#{post_path(@post)}&t=#{@post.title} ", :id => "facebook_share_link", :popup => ['new_window','height=300,width=600']
+        %li.twitter_button_post{:id => "twitter"}= link_to "Tweet", "http://twitter.com/home?status=#{@post.title} http://plaggs.com#{post_path(@post)}", :title=>"Share the plagg on Twitter!", :id => "twitter_share_link", :popup => ['new_window','height=300,width=600']
+        %li.emal_button_post{:id => "email"}= link_to "Email", '#',{:id => "email_now_link"}
+		
+		
+		
+     	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+- if logged_in? || !logged_in?
+
+  - content_for :offer_form do
+    #plagg_video.modal
+      
+      %li
+        = @post.body_html		
+		
+
+#shadow_box_email
+  #shadow_email
+    #send_now
+      - semantic_form_for(:email, :url => share_plagg_with_friend_path) do |f|
+        - f.inputs do
+          = f.input :to, :label => "Friend's email"
+          - if @current_user
+            = f.input :from_email, :label => "Your email", :input_html => { :value => @current_user.email_address }
+          -else
+            = f.input :from_email, :label => "Your email"
+          = f.input :from_name, :as => :hidden, :label => "Your name"
+          = f.input :post_title, :as => :hidden, :input_html => { :value => @post.title }
+          = f.input :post_id, :as => :hidden, :input_html => { :value => @post.id }
+          = f.input :to_name, :as => :hidden, :input_html => { :value => @post.user.username }
+          = f.input :post, :as => :hidden, :input_html => { :value => @post }
+          = f.input :Message, :label => "Body", :as => :text
+          = f.input :Title, :as => :hidden, :input_html => { :value => "Check out this post!" }
+        - f.buttons do
+          = f.commit_button "Contact now"	
+		  
+		  
+    #send_feedback
+      %h2.title Mail your friend about this amazing plagg
+      %p.subtitle
+
+      %p
+        If your friend is a human, then spamming is not ok. Please respect that.
+
+
+      = link_to "Go back", "#", { :onclick=> "Shadowbox.close()", :class => "cancel" }	
+		
+		
+.clear
+#comments
+  = render :partial => "comments/comment", :collection => @comments
+
+  - if logged_in?
+    - semantic_form_for([@post, @comment]) do |f|
+      = render :partial => "comments/form", :locals => { :f => f }
+      
+      - f.buttons do
+        = f.commit_button "Comment"
+
+- content_for :breadcrumb_trail do
+  = link_to "Blog", posts_path
+  = link_to @post.title, post_path(@post.perma_link), :class => "last"

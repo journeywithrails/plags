@@ -1,0 +1,17 @@
+#accept
+  %li
+    - if received.viewed_at.blank?      
+      - received.update_attribute(:viewed_at, Time.now) unless received.viewed_at
+    .image= image_tag("/images/received.png",:size => "15x15")
+    .avatar= image_tag(received.plaggs.first.assets.first.data.url(:miniview))
+    %p.message
+      = link_to received.sender.username, user_path(received.sender), { :class => "username" }
+      wants to trade their
+      = received.plaggs.map { |p| link_to p.title, plagg_path(p), { :class => "plagg"} }.to_sentence
+      for your
+      = link_to received.plagg.title, plagg_path(received.plagg), { :class => "plagg "}
+      %p= "<i>#{received.offerings[0].notes}</i>"
+    %p.meta
+      %span.timestamp= "#{time_ago_in_words (received.created_at)} ago"
+      %span.remove= link_to "Accept", { :controller => "offers", :action => "accept", :id => received.id }, { :class => "delete", :method => :delete }
+      %span.remove= link_to "Delete", { :controller => "offers", :action => "rdestroy", :id => received.id }, { :class => "delete", :method => :delete }

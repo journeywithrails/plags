@@ -1,0 +1,11 @@
+- semantic_form_for @post, :html => {:multipart => true} do |f|
+  
+  %h2.legend Write a new blog post
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Publish now"
+    
+- content_for :breadcrumb_trail do
+  = link_to "Blog", posts_path
+  = link_to "Create a new post", new_post_path, :class => "last"

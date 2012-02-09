@@ -1,0 +1,143 @@
+= error_messages_for "plagg"
+
+%h2.legend What are you selling?
+- f.inputs do
+  = f.input :title
+  = f.input :description, :input_html => { :rows => 10 }
+
+%h2.legend How do you want to sell your plagg?
+- f.inputs do
+  = f.input :price
+  = f.input :is_tradeable
+  %li.boolean.required
+    %label Allow bartering?
+    %span
+      %span#allow_trading_button Barter
+      press to enable this and you will be able to trade with other users!
+
+%h2.legend Plagg pictures
+- if !f.object.new_record?
+  - f.semantic_fields_for :assets do |asset|
+    = render :partial => "asset", :locals => { :f => asset }
+#testasset
+  %ol#uploadify_results
+  #asset_queue
+  #asset_uploader_placeholder
+  - session_key_name = ActionController::Base.session_options[:key]
+  :javascript
+    (function($) {
+      var form = $("form.plagg"),
+          submit = form.find(".commit input[name=commit]"),
+          results = form.find("#uploadify_results");
+
+      submit.live("click", function() {
+        if (results.find(".success").size() === 0 && form.find("li.asset").size() === 0) {
+          return false;
+        }
+      });
+
+      $("#asset_uploader_placeholder").uploadify({
+        auto: true,
+        buttonText: "Add Photos",
+        cancelImg: "/images/cancel.png",
+        fileDataName: "asset[data]",
+        multi: true,
+        onAllComplete: function(event, data) {
+          submit.removeAttr("disabled");
+        },
+        onComplete: function(event, queueID, fileObj, response, data) {
+          var r = parseInt(response);
+
+          if (isNaN(r) || r === 0) {
+            results.append("<li class='error'>" + response + "</li>");
+          } else {
+            results.append("<li class='success'>" + fileObj.name + " successfully uploaded! <input type='hidden' id='asset_" + r + "' name='plagg[asset_ids][]' value='" + r + "' /></li>");
+            $("#carousel").append("<div class='preview'><img src='/images/assets/preview/" + r + "/" + fileObj.name + "'></div>");
+            $("#images").append("<a class='miniview'><img src='/images/assets/miniview/" + r + "/" + fileObj.name + "'></a>");
+          }
+        },
+        onOpen: function(event, queueID, fileObj) {
+          submit.attr("disabled", "disabled");
+        },
+        queueSizeLimit: 3,
+        script: "#{assets_path(:format => "json")}",
+        scriptData: {
+          #{session_key_name}: "#{u cookies[session_key_name]}",
+          authenticity_token: encodeURIComponent("#{u form_authenticity_token if protect_against_forgery?}")
+        },
+        sizeLimit: 10485760,
+        uploader: "/uploadify.swf"
+      });
+    })(jQuery);
+
+- f.inputs do
+  =f.input :body, :label => "video"
+
+%h2.legend Categorize
+- f.inputs do
+  = f.input :department, :include_blank => false, :input_html => { "data-categories-uri" => categories_path(:format => :json) }
+  = f.input :category,   :include_blank => false, :input_html => { "data-sizes-uri" => sizes_path(:format => :json) }
+  = f.input :size,       :include_blank => false, :multiple => true
+    
+  
+ 
+ 
+
+%h2.legend Tag your plagg
+#testCheck
+  - f.inputs do
+    = f.input :tags, :required => false, :as => :check_boxes, :collection => Tag.seasons,    :label => "Season"
+    = f.input :tags, :required => false, :as => :check_boxes, :collection => Tag.occasions,  :label => "Occasion"
+    = f.input :tags, :required => false, :as => :check_boxes, :collection => Tag.conditions, :label => "Condition"
+    = f.input :brand_name, :required => false, :input_html => {:value => @location, :style => 'width: 250px',:id => "brand_names"}
+    	
+- if authorized?
+  %h2.legend Approved for public viewing
+
+  - f.inputs do
+    = f.input :approved, :as => :select
+
+- if logged_in?
+  - content_for :plagg_form do
+    #plagg_preview.modal{:style=>"padding:39px 41px;margin-left:-475px;"}
+      #plagg{:style=>"position:relative;margin-top:0;"}
+        #images
+          #preview
+            #carousel
+            #cursor
+            #next
+            #previous
+          
+        #details{:style=>"width:300px;"}
+          .title           
+          .department
+		  
+          #user
+            %p
+              By
+              = link_to @plagg.user.username, user_path(@plagg.user)
+            .avatar
+              = link_to (image_tag(@plagg.user.avatar.url(:thumb)), user_path(@plagg.user))
+          
+          %h3 Price
+          .price
+          .description
+          %h3 Tags
+          .tags
+          %h3 Conditions
+          .conditions
+          %h3 Size
+          .size
+        %div{:style=>"position:absolute;left:0;margin-left:400px;top:0;margin-top:440px;"}
+          %ul
+          %li
+            %input{:type=>"submit",:id=>"preview_plagg_submit", :name=>"commit",:class=>"create",:value=>"Send now!"}
+          %li
+            %input{:type=>"submit",:id=>"preview_plagg_submit_sent", :name=>"",:class=>"",:value=>"Send and upload next!"}		  
+          %li
+            = link_to "Go back", "#", { :class => "cancel cancel-change" }		  		      
+      
+
+      
+      
+    

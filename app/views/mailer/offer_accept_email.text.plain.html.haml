@@ -1,0 +1,10 @@
+Hi #{@offer.sender.username},
+
+Your request accepted for #{@offer.receiver.username} 's #{@offer.plagg.title}
+in exchange for your #{@offer.plaggs[0].title}
+
+\#{@offer.offerings[0].notes}
+
+Find out more at your notifications page: #{notifications_url(:only_path => false)}
+
+\-The Plaggs Crew

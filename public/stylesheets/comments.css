@@ -1,0 +1,59 @@
+#comments {
+  width: 300px;
+}
+#comments .comment {
+  background: #f5f4ed;
+  margin-top: 5px;
+  overflow: hidden;
+  padding: 6px;
+  width: 288px;
+}
+#comments .comment .avatar {
+  float: left;
+  height: 48px;
+  width: 48px;
+}
+#comments .comment .content {
+  float: right;
+  width: 234px;
+}
+#comments .comment .content .meta {
+  margin-bottom: 2px;
+}
+#comments .comment .content .meta a {
+  color: #e4005a;
+}
+#comments .comment .content a {
+  color: #5ba69a;
+}
+
+#new_comment {
+  background: #f5f4ed;
+  padding: 6px;
+}
+#new_comment fieldset {
+  margin: 0;
+}
+#new_comment fieldset li {
+  margin: 0;
+}
+#new_comment fieldset li label {
+  display: none;
+}
+#new_comment fieldset li textarea {
+  background: #fff;
+  border: 0;
+  color: #40403f;
+  width: 288px;
+}
+#new_comment .commit {
+  text-align: right;
+}
+#new_comment .commit #comment_submit {
+  background: #a8a79f;
+  border: 0;
+  color: #fff;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 10px;
+}

@@ -1,0 +1,13 @@
+- f.inputs do
+  %li
+    %label Tags
+
+    = select_tag('filter[tags][]', grouped_options_for_select(@tags, @sel_tags), :multiple=>"multiple", :id => 'filter_tags', :prompt => false)
+-if @category
+  - f.inputs do
+    = f.input :sizes, :required => false, :as => :select, :input_html => { :multiple => true }, :collection => sizes, :selected => sel_sizes, :prompt => false 
+.clear
+= f.input :location, :required => false, :input_html => {:value => @location, :style => 'width: 250px; margin-right:10px;' }
+= f.input :brand_name, :required => false, :input_html => {:value => @brand, :style => 'width: 180px;',:id => "brand_names"}
+- f.buttons do
+  = f.commit_button (defined?(filter_button) ? filter_button : "Filter")

@@ -1,0 +1,20 @@
+%h2#title All categories
+
+= will_paginate @categories
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Department
+      %th Weight
+      %th Actions
+  %tbody
+    = render @categories
+
+= will_paginate @categories
+
+= link_to "New category", new_category_path, { :id => "new_category_link" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Categories", categories_path, :class => "last"

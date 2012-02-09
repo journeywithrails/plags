@@ -1,0 +1,48 @@
+.guide_header
+  .question_block
+    %h2.title
+      About the Site
+    %ul
+      %li= link_to "How do I use the site?", "#"
+      %li= link_to "How do I register?", "#"
+      %li= link_to "FAQ", "#"
+  .question_block
+    %h2.title
+      Advertising
+    %ul
+      %li= link_to "What does it cost?", "#"
+      %li= link_to "How do I pay?", "#"
+      %li= link_to "Is it secure to pay?", "#"
+  .question_block
+    %h2.title
+      Advertising
+    %ul
+      %li= link_to "What does it cost?", "#"
+      %li= link_to "How do I pay?", "#"
+      %li= link_to "Is it secure to pay?", "#"
+  .clear
+
+#guide.guide
+  %h2.title= @guide.title
+  .content
+    - if @guide.image
+      = image_tag(@guide.image.url)
+    = @guide.content_html
+  - if authorized?
+    %p.meta
+      = link_to "Edit guide", edit_guide_path(@guide), { :class => "edit" }
+      = link_to "Delete", guide_path(@guide), { :method => :delete, :confirm => "Are you sure you want to delete \"#{@guide.title}\"?", :class => "edit" }
+
+#comments
+  = render :partial => "comments/comment", :collection => @comments
+
+  - if logged_in?
+    - semantic_form_for([@guide, @comment]) do |f|
+      = render :partial => "comments/form", :locals => { :f => f }
+      
+      - f.buttons do
+        = f.commit_button "Comment"
+
+- content_for :breadcrumb_trail do
+  = link_to "Guide Home", guides_path
+  = link_to @guide.title, guide_path(@guide), :class => "last"

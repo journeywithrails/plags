@@ -1,0 +1,9 @@
+%h2#title
+  Set monitoring parameters for #{@department.name}
+
+#filter
+  - semantic_form_for(:filter, :url => set_monitor_department_path(@department)) do |f|
+    = render :partial => "shared/filter", :locals => { :f => f, :tags  => @tags, :sizes => @sizes, :sel_tags => @sel_tags, :sel_sizes  => @sel_sizes, :filter_button => 'Monitor'}
+
+%p
+= link_to "Back", :back

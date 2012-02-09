@@ -1,0 +1,10 @@
+- semantic_form_for(@category) do |f|
+  
+  %h2.legend Editing category
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save these changes"
+
+- content_for :breadcrumb_trail do
+  = link_to "Editing category", edit_category_path(@category), :class => "last"

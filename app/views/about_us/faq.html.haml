@@ -1,0 +1,39 @@
+:javascript
+  divvalue=0;
+  divactive=true;
+  
+  function content_fun(id){
+  
+  	if(divactive==true){
+  document.getElementById('multiline_'+id).style.display = "block";
+  document.getElementById('singleline_'+id).style.display="none";
+  
+  divactive=false;
+  	}
+  	else
+  	{
+  		cancellogin(id)		
+  	}
+  }
+  
+  
+  function cancellogin(id){
+  	document.getElementById('multiline_'+id).style.display="none";
+  	document.getElementById('singleline_'+id).style.display="block";
+  
+  divactive=true;
+  }
+
+#notifications
+  .faqs-block
+    .title FAQ
+    - @content.each_with_index do |content,i|
+      %h2{:style => "text-align:left"}
+        Q:
+        %a{:href => "javascript:content_fun(#{i});"} "#{content.title}"
+      %p.faqs-answers{:id => "singleline_#{i}", :style => "display:'block';"}
+        A:"#{truncate(content.description,70)}"
+      %p.faqs-answers{:id => "multiline_#{i}",:style => "display:none;"}
+        A:"#{content.description}"
+  - content_for :breadcrumb_trail do
+    = link_to "FAQ ", faq_about_us_path, {:class => "last"}

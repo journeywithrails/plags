@@ -1,0 +1,9 @@
+.about-us-block
+  .title
+    Plaggs.com, the purpose
+  %p The purpose  behind the plaggs.com is to give fashion back to people, to embrace you and your style.....
+  .title.inner-title{:style => "margin-top:15px"}
+    People behind the Plaggs.com
+  %p We are small group of fashion and people enthusiast.....................
+  - content_for :breadcrumb_trail do
+    = link_to "About us ", about_ads_path, {:class => "last"}

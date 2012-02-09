@@ -1,0 +1,32 @@
+#user
+  .avatar
+    = image_tag(@user.avatar.url(:thumb))
+  #info
+    %p#username= @user.username
+    %p#rank= user_role(@user)
+    %p
+      - if authorized? || current_user == @user
+        = link_to "Edit profile", edit_user_path(@user)
+      - if logged_in? && current_user != @user
+        - if !current_user.watching?(@user)
+          = link_to "Monitor", watch_user_path(@user), { :method => :post }
+        - else
+          = link_to "Un Monitor", ignore_user_path(@user), { :method => :delete }
+
+  #profile
+    = @user.profile
+
+%p.per_page
+  = link_to("8",  user_path(@user, :per_page => 8)) + ","
+  = link_to("16", user_path(@user, :per_page => 16)) + ","
+  = link_to("24", user_path(@user, :per_page => 24))
+  per page
+      
+#plaggs
+  = render :partial => "plaggs/plagg", :collection => @plaggs
+
+= will_paginate(@plaggs)
+
+- content_for :breadcrumb_trail do
+  = link_to "Users", users_path
+  = link_to @user.username, user_path(@user), :class => "last"

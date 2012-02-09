@@ -1,0 +1,10 @@
+- semantic_form_for(@user, :html => { :multipart => true }) do |f|
+
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Save my changes"
+
+- content_for :breadcrumb_trail do
+  = link_to "Users", users_path
+  = link_to "Editing account", edit_user_path(@user), :class => "last"

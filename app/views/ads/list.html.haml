@@ -1,0 +1,13 @@
+#notifications
+  .faqs-block
+    .title FAQ's
+    - for content in @content
+      %h2{:style => "text-align:left"}
+        Q:#{content.title}
+      %p.faqs-answers
+        A:#{content.description}
+      .form_inputfield{:style => " padding-left:10px;"}
+        = link_to "Edit", :action => 'edit', :id => content.id 
+        #{link_to "Delete", {:action => 'delete', :id => content.id}, :confirm=>"Do you really want to delete this content?"}
+  - content_for :breadcrumb_trail do
+    = link_to "New FAQs", :controller=>"ads", :action=>"new"

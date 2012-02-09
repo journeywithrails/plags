@@ -1,0 +1,43 @@
+#plagg{:style => "width:300px;float:left;margin-top:13px"}
+  #images
+    #preview
+      #carousel
+        - if !post.image_file_name.blank?
+          .preview
+            = image_tag(post.image.url(:preview))
+        - if !post.image_2_file_name.blank?
+          .preview
+            = image_tag(post.image_2.url(:preview))
+        - if !post.image_3_file_name.blank?
+          .preview
+            = image_tag(post.image_3.url(:preview))
+      #cursor
+      #next
+      #previous
+    %a.miniview
+      = image_tag(post.image.url(:miniview)) if !post.image_file_name.blank?
+    %a.miniview
+      = image_tag(post.image_2.url(:miniview)) if !post.image_2_file_name.blank?
+    %a.miniview
+      = image_tag(post.image_3.url(:miniview)) if !post.image_3_file_name.blank?
+    
+    #video
+    - if !@post.body.blank?
+      #pl_video
+        = @post.body_html
+      :javascript
+             (function($) {
+            var sr
+            $("#pl_video embed").each(function(){
+            sr = sr = $(this).attr('src')+"&autoplay=1&fs=1&rel=0" ;
+           
+        });
+        
+
+        $("#video").append("<a id = 'shadow_plagg_video_link' rel='shadowbox;width=640;height=480;player=swf' href='"+sr+"' >YouTube</a>");
+        $("#pl_video").remove();
+        })(jQuery);
+        
+    #vote
+      %a#vote_plagg_link{:href => "#", :value => "28"} vote
+      %label 2

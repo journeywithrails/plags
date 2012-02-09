@@ -1,0 +1,184 @@
+!!!
+%html(xmlns:fb="http://www.facebook.com/2008/fbml")
+  %head
+    %title= @site_title
+    = stylesheet_link_tag "screen", "jquery-ui-1.css","new_added.css","slider.css"
+    = javascript_include_tag "jquery-1.4.1.min.js","jquery-ui-1.js","ui.core-min.js", "ui.dropdownchecklist-min.js", "juggernaut/jquery.json", "juggernaut/jquery.juggernaut", "swfobject.js", "jquery.uploadify.v2.1.0.min.js","dropdownchecklist.js","jquery-validate/jquery.validate.js", "jquery.autocomplete.js","application"
+    = javascript_tag "window.api_key = '#{Facebooker.api_key}';"
+    %link(rel="stylesheet" type="text/css" href="/shadowbox-3.0.3/shadowbox.css")
+    - if logged_in?
+      = juggernaut(:client_id => current_user.id) 
+    %script(type="text/javascript" src="/shadowbox-3.0.3/shadowbox.js")
+    %script(type="text/javascript")
+      Shadowbox.init({
+      language: 'en',
+      players:  ['img', 'html', 'iframe', 'qt', 'wmp', 'swf', 'flv','inline'],
+      handleOversize: "drag",
+      modal: false,
+      enableKeys: false
+
+      });
+    %script(src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php/en_US" type="text/javascript")
+    %script(type="text/javascript")
+      FB.init(window.api_key, "/xd_receiver.html");
+    -if @plagg
+      %meta{"name" => "title", "content" => "#{@plagg.title}"}
+      %meta{"name" => "description", "content" => "#{@plagg.description}"}
+      - if @plagg.assets[0]
+        %link{"rel" =>  "image_src", "href" => "#{@plagg.assets[0].data.url(:tile)}"}
+  %body
+    
+    #wrap
+      #head
+        = link_to "Plaggs.com", root_path, :class => "logo"
+        %ul#nav
+          -if authorized?
+            %li#nav_admin
+              = link_to "Admin", "#"
+              %ul
+			    
+                %li= link_to "Manage departments", departments_path  
+                %li= link_to "Manage Ads(Plaggs)", ads_path		    
+                %li= link_to "Manage categories", categories_path
+                %li= link_to "Manage sizes", sizes_path
+                %li= link_to "Manage FAQ's", :controller=>"ads", :action=>"new"
+                %li= link_to "Manage tags", tags_path
+                %li= link_to "New page", new_page_path
+                %li= link_to "New guide", new_post_path
+                %li= link_to "Manage networks", networks_path
+				
+          - if !logged_in?
+            %li#nav_join= link_to "Join", new_user_path
+          %li#nav_admin
+            = link_to "About us", :controller => "about_us"
+            %ul
+			    
+              %li= link_to "FAQ", faq_about_us_path  
+              %li= link_to "Terms", terms_about_us_path
+              %li= link_to "Contact", contact_about_us_path
+			 		
+          %li#nav_blog= link_to "Guide", posts_path
+          - if logged_in?
+            - unless unseen? == "none"
+              %li#view_notifications_link= link_to "Konto", notifications_path, { "data-unseen-uri" => unseen_path(:format => "json") }
+            - else
+              %li#view_no_notifications_link= link_to "Konto", notifications_path, { "data-unseen-uri" => unseen_path(:format => "json") }
+            %li
+              %ul#notification_popup
+                %li#user_info
+                  = link_to (image_tag(current_user.avatar.url(:thumb)), user_path(current_user))
+                  %details
+                    = link_to current_user.username, user_path(current_user)
+                %li#links
+                  = link_to "Händelser", notifications_path
+                %li#links
+                  - unless unseen? == "none"
+                    = link_to "Monitorings", {:controller => :monitorings}, :style => "color:#e4005a; font-weight:bold;"
+                  - else
+                    = link_to "Monitorings", :controller => :monitorings
+                %li#links
+                  = link_to "Logga ut", sign_out_path
+
+				 
+              
+          - else
+            %li#nav_session= link_to "Sign In", sign_in_path, { :id => "new_session_link" }
+          %li#nav_search
+            .inner-block
+              - form_tag search_path, :method => :post do
+                = text_field_tag "query"
+                = submit_tag "Search plaggs"
+
+        %h1#breadcrumb
+          = link_to h("Plaggs.com"), root_path, :class => "first"
+          = yield :breadcrumb_trail
+      #body
+        #left
+          %ul#nav_departments
+            - @nav_departments.each_with_index do |department, i|
+              %li= link_to department.name, department_path(department), { :class => current_department?(department, i) }
+          %ul#nav_categories
+            - @nav_categories.each_with_index do |category, i|
+              %li= link_to category.name, category_path(category), { :class => current_category?(category, i) }
+          %ul#nav_sub_categories
+            - if @nav_sub_categories
+              - @nav_sub_categories.each_with_index do |category, i|
+                %li= link_to category.name, category_path(category), { :class => current_category?(category, i) }
+        #middle
+          - if flash[:notice] || flash[:warning]
+            #notify
+            - if flash[:notice]
+              %p#notice= flash[:notice]
+            - if flash[:warning]
+              %p#warning= flash[:warning]
+          = yield
+        #right
+          - unless current_page?(new_plagg_path)
+            .block
+              #post_button= link_to "Nytt plagg", new_plagg_path, { :id => "new_plagg_link" }
+
+          - unless @plagg 
+            .block
+              :erb
+                <fb:fan profile_id="147557379222" stream="0" connections="3" logobar="0" width="200" height="180" css="<%= stylesheet_path "http://plaggs.com:3000/stylesheets/fb_fanbox" %>"></fb:fan>
+
+          - if @plagg && !@plagg.id.nil? && (authorized? || (logged_in? && @plagg.user == current_user))
+            .block
+              #admin
+                %h3 Administration
+                - if authorized?
+                  - if @plagg.approved
+                    %p= link_to "Remove ad", plagg_path(@plagg), :method => :destroy
+                  - else
+                    %p= link_to "Publish ad", publish_plagg_path(@plagg), :method => :put
+                    %p= link_to "Decline ad", "#", :id => "decline_plagg_link"
+                - if logged_in? && @plagg.user == current_user
+                  %p= link_to "Cancel ad", plagg_path(@plagg), :method => :destroy
+                  %p= link_to "Edit", edit_plagg_path(@plagg), { :id => "edit_plagg_link" }
+
+        
+      = render :partial => "shared/brands" 
+    #contact_tab
+
+    #shadow
+    #shadow_box_contact
+      #contact
+        #send_now
+          - semantic_form_for(:email, :url => contact_path) do |f|
+            - f.inputs do
+              = f.input :name
+              = f.input :email_address
+              = f.input :body, :as => :text
+      
+            - f.buttons do
+              = f.commit_button "Send now"
+     
+        #send_feedback
+          %h2.title Send us feedback.
+          %p.subtitle It&#8217;s important.
+      
+          %p
+            %strong
+              %span
+                Feel free to contact us about anything!
+      
+          %p
+            Questions, ideas, or even just some comments&mdash;all feedback is appreciated.
+      
+          %p We&#8217;d love to hear from you!
+      
+          = link_to "Go back", "#", { :onclick=> "Shadowbox.close()", :class => "cancel" }
+  
+      
+    #contextual.modal
+      = yield :contextual_modal
+
+    - unless logged_in?
+      #shadow_box_authentication
+        #authentication
+          = render :partial => "sessions/form"
+
+    = yield :plagg_form
+    = yield :offer_form
+    = yield :decline_form
+

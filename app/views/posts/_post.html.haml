@@ -1,0 +1,17 @@
+.post.post-paragraph
+  %h2.title= link_to post.title, post_path(post.perma_link)
+  .content
+    - if post.image_file_name
+      = link_to image_tag(post.image.url(:tile)), post_path(post.perma_link), :class => "title_class"
+    - else
+      = image_tag("/images/blank-post.gif")		  
+    = truncate(post.content_html,250)
+    = link_to "Read more",post_path(post.perma_link), {:style => "color:#e4005a; font-weight:bold;"}
+    
+
+  %p.meta
+    = link_to "Permalink", post_path(post.perma_link), { :class => "permalink" }
+    = link_to pluralize(post.comments.count, "Comment"), "#{post_path(post.perma_link)}#comments", { :class => "comment_count" }
+    - if authorized?
+      = link_to "Edit", edit_post_path(post.perma_link), { :class => "edit" }
+      = link_to "Delete", post_path(post.perma_link), { :method => :delete, :confirm => "Are you sure you want to delete \"#{post.title}\"?", :class => "edit" }

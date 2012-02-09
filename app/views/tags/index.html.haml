@@ -1,0 +1,15 @@
+%h2#title All tags
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Group
+      %th Actions
+  %tbody
+    = render @tags
+
+= link_to "New tag", new_tag_path, { :id => "new_tag_link" }
+
+- content_for :breadcrumb_trail do
+  = link_to "Tags", tags_path, :class => "last"

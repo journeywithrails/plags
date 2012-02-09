@@ -1,0 +1,11 @@
+- semantic_form_for(@network) do |f|
+
+  %h2.legend Create a new network
+  = render :partial => "form", :locals => { :f => f }
+
+  - f.buttons do
+    = f.commit_button "Create this network"
+
+- content_for :breadcrumb_trail do
+  = link_to "Networks", networks_path
+  = link_to "Create a new network", new_network_path, :class => "last"

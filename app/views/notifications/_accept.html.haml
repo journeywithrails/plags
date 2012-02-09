@@ -1,0 +1,40 @@
+#accept
+  - if accept.receiver == current_user
+    %li
+      %p.message
+        - if accept.viewed_at.blank?
+         
+          - accept.update_attribute(:viewed_at, Time.now) unless accept.receiver_id == current_user.id
+          .image= image_tag("/images/accepted_request.png",:size => "17x14")
+        .avatar= image_tag(accept.plaggs.first.assets.first.data.url(:miniview))
+        %font{:color => "#E61769", :style=>"font-weight:bold;"} You accepted
+        a request for 
+        = link_to(accept.sender.username, user_path(accept.sender), { :class => "username" }) + "&#8217;s"
+        = accept.plaggs.map { |p| link_to p.title, plagg_path(p), { :class => "plagg" } }.to_sentence
+        in exchange for your
+        = link_to accept.plagg.title, plagg_path(accept.plagg), { :class => "plagg" }
+        %p= "<i>#{accept.offerings[0].notes}</i>"
+        %p.meta
+          %span.timestamp= "#{time_ago_in_words (accept.accepted_at)} ago"
+          %span.remove= link_to "Delete", { :controller => "offers", :action => "delete_accept", :id => accept.id }, { :class => "delete", :method => :delete }
+
+  - else
+    -unless accept.sent_at.nil?
+      %li
+        %p.message
+          - if accept.viewed_at.blank?
+           
+            - accept.update_attribute(:viewed_at, Time.now) unless accept.receiver_id == current_user.id
+            .image= image_tag("/images/accepted_request.png",:size => "17x14")
+
+          .avatar= image_tag(accept.plagg.assets.first.data.url(:miniview))
+          %font{:color => "#E61769", :style=>"font-weight:bold;"} Your request 
+          got accepted for
+          = link_to(accept.receiver.username, user_path(accept.receiver), { :class => "username" }) + "&#8217;s"
+          = link_to accept.plagg.title, plagg_path(accept.plagg), { :class => "plagg" }
+          in exchange for your
+          = accept.plaggs.map { |p| link_to p.title, plagg_path(p), { :class => "plagg" } }.to_sentence
+          %p= "<i>#{accept.offerings[0].notes}</i>"
+          %p.meta
+            %span.timestamp= "#{time_ago_in_words (accept.accepted_at)} ago"
+            %span.remove= link_to "Delete", { :controller => "offers", :action => "delete_accept", :id => accept.id }, { :class => "delete", :method => :delete }

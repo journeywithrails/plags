@@ -1,0 +1,7 @@
+#notifications
+  .about-us-block.contact_us
+    .title
+      Kontakta oss
+    %p Vi vill gärna höra från dig. Använd vårt kontaktformulär, så återkommer vi till dig fortast möjligt. Vill du göra affärer med oss, och vi behöver träffas personligen, kanske vill du veta att vi håller till i Göteborg, men är flexibla gällande tid och plats.
+    - content_for :breadcrumb_trail do
+      = link_to "Contact", contact_about_us_path, {:class => "last"}

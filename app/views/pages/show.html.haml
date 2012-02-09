@@ -1,0 +1,22 @@
+#page.page
+  %h2.title= @page.title
+  .content
+    = @page.content_html
+  - if authorized?
+    %p.meta
+      = link_to "Edit page", edit_page_path(@page), { :class => "edit" }
+      = link_to "Delete", page_path(@page), { :method => :delete, :confirm => "Are you sure you want to delete \"#{@page.title}\"?", :class => "edit" }
+
+#comments
+  = render :partial => "comments/comment", :collection => @comments
+
+  - if logged_in?
+    - semantic_form_for([@page, @comment]) do |f|
+      = render :partial => "comments/form", :locals => { :f => f }
+      
+      - f.buttons do
+        = f.commit_button "Comment"
+
+- content_for :breadcrumb_trail do
+  = link_to "Pages", pages_path
+  = link_to @page.title, slugged_page_path(:slug => @page.slug), :class => "last"

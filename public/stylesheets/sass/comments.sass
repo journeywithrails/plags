@@ -1,0 +1,63 @@
+@import variables.sass
+
+// index ======================================================================
+
+#comments
+  width: 300px
+
+  .comment
+    background: #f5f4ed
+    margin-top: 5px
+    overflow: hidden
+    padding: 6px
+    width: 288px
+
+    .avatar
+      float: left
+      height = !avatar_height
+      width = !avatar_width
+    
+    .content
+      float: right
+      width: 234px
+
+      .meta
+        margin-bottom: 2px
+        
+        a
+          color = !pink_text
+
+      a
+        color = !teal_text
+
+// new ========================================================================
+
+#new_comment
+  background: #f5f4ed
+  padding: 6px
+
+  fieldset
+    margin: 0
+
+    li
+      margin: 0
+
+      label
+        display: none
+
+      textarea
+        background: #fff
+        border: 0
+        color = !dark_text
+        width: 288px
+
+  .commit
+    text-align: right
+
+    #comment_submit
+      background: #a8a79f
+      border: 0
+      color: #fff
+      height: 20px
+      line-height: 20px
+      padding: 0 10px
